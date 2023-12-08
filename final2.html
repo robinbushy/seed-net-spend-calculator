@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seed's Net Revenue % Calculator</title>
+  <style>
+    body {
+      font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #EFF1F3;
+      text-align: center;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #calculator-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    #title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input[type="range"] {
+      width: 80%;
+      margin: 10px 0;
+    }
+
+    #sliderValue {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #manualInput {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="calculator-container">
+    <div id="title">Seed's Net Revenue % Calculator</div>
+
+    <label for="netRevenue">Choose your Net Revenue:</label>
+    <input type="range" id="netRevenue" min="0" max="2000000" step="1000" value="0">
+
+    <div id="sliderValue">£0</div>
+
+    <div>Scale: £0 - £2,000,000</div>
+
+    <label for="manualInput">Enter Net Revenue:</label>
+    <input type="number" id="manualInput" placeholder="Enter Net Revenue">
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const resultElement = document.getElementById('result');
+    const sliderValueElement = document.getElementById('sliderValue');
+    const netRevenueSlider = document.getElementById('netRevenue');
+    const manualInput = document.getElementById('manualInput');
+
+    function updateResult() {
+      const inputValue = parseFloat(netRevenueSlider.value);
+      const result = calculateResult(inputValue);
+      const formattedResult = formatCurrency(result);
+      const effectivePercentage = calculateEffectivePercentage(result, inputValue);
+
+      resultElement.innerHTML = `Seed Invoice: ${formattedResult}<br>Effective Net Revenue %: ${effectivePercentage}%`;
+    }
+
+    function calculateResult(A34) {
+      const D25 = 3500;
+      const A26 = 0;
+      const B26 = 100000;
+      const C26 = 0.10;
+      const E26 = 10000;
+      const B27 = 500000;
+      const C27 = 0.01;
+      const E27 = 14000;
+      const A28 = 500000;
+      const B28 = 1000000;
+      const C28 = 0.005;
+      const E28 = 16500;
+      const C29 = 0.0025;
+      const E29 = 16500;
+
+      if (A34 <= 35000) {
+        return D25;
+      } else if (A34 >= A26 && A34 <= B26) {
+        return A34 * C26;
+      } else if (A34 > B26 && A34 <= B27) {
+        return (A34 - B26) * C27 + E26;
+      } else if (A34 > A28 && A34 <= B28) {
+        return (A34 - A28) * C28 + E27;
+      } else if (A34 > B28) {
+        return (A34 - B28) * C29 + E28;
+      } else {
+        return "Invalid Input";
+      }
+    }
+
+    function calculateEffectivePercentage(result, inputValue) {
+      const effectivePercentage = (result / inputValue) * 100;
+      return effectivePercentage.toFixed(2);
+    }
+
+    function formatCurrency(amount) {
+      return `£${amount.toFixed(2)}`;
+    }
+
+    // Update result dynamically as the slider value changes
+    netRevenueSlider.addEventListener('input', function () {
+      updateResult();
+      sliderValueElement.innerHTML = `£${this.value}`;
+      manualInput.value = this.value;
+    });
+
+    // Update slider value and result when manual input changes
+    manualInput.addEventListener('input', function () {
+      const inputValue = parseFloat(this.value);
+      if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= 2000000) {
+        netRevenueSlider.value = inputValue;
+        updateResult();
+        sliderValueElement.innerHTML = `£${inputValue}`;
+      }
+    });
+
+    // Initial result update
+    updateResult();
+  </script>
+</body>
+
+</html>
