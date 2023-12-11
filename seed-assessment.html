@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Assessment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        output {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Self-Assessment</h1>
+    
+    <form id="assessmentForm" onsubmit="submitForm(event)">
+        
+        <!-- Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <br>
+
+        <!-- Delegation -->
+        <label for="delegation"><b>Delegation:</b></label>
+        <input type="range" id="delegation" name="delegation" min="1" max="10" value="1" oninput="updateOutput('delegation', 'delegationOutput', 'delegationDescription')" required>
+        <output id="delegationOutput">Level 1: Basic Delegator</output>
+        <p id="delegationDescription">Assigns simple tasks to team members. Requires guidance in effective task allocation.</p>
+
+        <br>
+
+        <!-- Problem Solver -->
+        <label for="problemSolver"><b>Problem Solver:</b></label>
+        <input type="range" id="problemSolver" name="problemSolver" min="1" max="10" value="1" oninput="updateOutput('problemSolver', 'problemSolverOutput', 'problemSolverDescription')" required>
+        <output id="problemSolverOutput">Level 1: Basic Problem Solver</output>
+        <p id="problemSolverDescription">Identifies simple issues and proposes basic solutions. May require guidance in problem-solving approaches.</p>
+
+        <br>
+
+        <!-- Teamwork -->
+        <label for="teamwork"><b>Teamwork:</b></label>
+        <input type="range" id="teamwork" name="teamwork" min="1" max="10" value="1" oninput="updateOutput('teamwork', 'teamworkOutput', 'teamworkDescription')" required>
+        <output id="teamworkOutput">Level 1: Basic Team Player</output>
+        <p id="teamworkDescription">Participates in team activities and projects. Requires guidance in collaborative efforts.</p>
+
+        <br>
+
+        <!-- Feedback -->
+        <label for="feedback"><b>Feedback:</b></label>
+        <input type="range" id="feedback" name="feedback" min="1" max="10" value="1" oninput="updateOutput('feedback', 'feedbackOutput', 'feedbackDescription')" required>
+        <output id="feedbackOutput">Level 1: Basic Feedback Provider</output>
+        <p id="feedbackDescription">Provides basic feedback in a straightforward manner. May require guidance on giving constructive comments.</p>
+
+        <br>
+
+        <!-- Ambition -->
+        <label for="ambition"><b>Ambition:</b></label>
+        <input type="range" id="ambition" name="ambition" min="1" max="10" value="1" oninput="updateOutput('ambition', 'ambitionOutput', 'ambitionDescription')" required>
+        <output id="ambitionOutput">Level 1: Basic Ambition</output>
+        <p id="ambitionDescription">Sets simple goals for personal and professional growth. Requires guidance in goal setting.</p>
+
+        <br>
+
+        <input type="submit" value="Submit">
+    
+    </form>
+
+    <script>
+        function updateOutput(inputId, outputId, descriptionId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            const description = document.getElementById(descriptionId);
+            const level = getLevelText(input.value, inputId);
+            const levelDescription = getLevelDescription(input.value, inputId);
+            output.textContent = level;
+            description.textContent = levelDescription;
+        }
+
+        function getLevelText(value, question) {
+            const levels = [
+                "Basic",
+                "Developing",
+                "Competent",
+                "Proficient",
+                "Advanced",
+                "Highly Skilled",
+                "Expert",
+                "Strategic",
+                "Visionary",
+                "Visionary"
+            ];
+
+            const levelIndex = Math.ceil(value / 10 * levels.length) - 1;
+            return `Level ${levelIndex + 1}: ${levels[levelIndex]} (${question})`;
+        }
+
+        function getLevelDescription(value, question) {
+            let descriptions;
+            
+            switch (question) {
+                case 'delegation':
+                    descriptions = [
+                        "Assigns simple tasks to team members. Requires guidance in effective task allocation.",
+                        "Demonstrates improvement in assigning tasks. Begins to consider team members' strengths.",
+                        "Delegates tasks effectively, considering team capabilities. Demonstrates growing trust in team members' abilities.",
+                        "Delegates complex tasks with clarity and purpose. Shows proficiency in empowering team members.",
+                        "Delegates strategically, aligning tasks with team members' strengths. Provides guidance and support when necessary.",
+                        "Empowers team members to take ownership of projects. Contributes to the development of others through delegation.",
+                        "Consistently delegates effectively in complex situations. Guides others in mastering delegation techniques.",
+                        "Demonstrates leadership in delegation. Develops and implements delegation strategies for the organisation.",
+                        "Shapes the organisation's delegation vision. Innovates delegation processes for enhanced efficiency.",
+                        "Defines industry standards in delegation. Transforms delegation into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'problemSolver':
+                    descriptions = [
+                        "Identifies simple issues and proposes basic solutions. May require guidance in problem-solving approaches.",
+                        "Demonstrates improvement in problem analysis. Begins to consider multiple solutions to a problem.",
+                        "Effectively identifies and addresses common issues. Demonstrates growing proficiency in problem resolution.",
+                        "Analyses complex problems with attention to detail. Shows proficiency in implementing effective solutions.",
+                        "Tackles intricate issues with confidence. Provides innovative solutions to complex challenges.",
+                        "Contributes to strategic decision making through problem solving. Exhibits a high level of expertise in analytical thinking.",
+                        "Consistently resolves complex problems effectively. Guides others in mastering problem-solving techniques.",
+                        "Demonstrates leadership in problem solving. Develops and implements problem-solving strategies for the organisation.",
+                        "Shapes the organisation's problem-solving vision. Innovates problem-solving processes for enhanced efficiency.",
+                        "Defines industry standards in problem solving. Transforms problem solving into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'teamwork':
+                    descriptions = [
+                        "Participates in team activities and projects. Requires guidance in collaborative efforts.",
+                        "Demonstrates improvement in collaborative tasks. Begins to contribute ideas to team discussions.",
+                        "Works effectively within the team, contributing to common goals. Demonstrates growing proficiency in collaborative efforts.",
+                        "Collaborates seamlessly with team members. Shows proficiency in leveraging team strengths.",
+                        "Fosters a collaborative team environment. Provides support and guidance to team members.",
+                        "Actively contributes to team success. Exhibits leadership in collaborative efforts.",
+                        "Consistently contributes to high-performing teams. Guides others in effective teamwork strategies.",
+                        "Demonstrates leadership in fostering teamwork. Develops and implements strategies to enhance team collaboration.",
+                        "Shapes the organisation's teamwork vision. Innovates teamwork processes for enhanced efficiency.",
+                        "Defines industry standards in fostering teamwork. Transforms teamwork into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'feedback':
+                    descriptions = [
+                        "Provides basic feedback in a straightforward manner. May require guidance on giving constructive comments.",
+                        "Shows improvement in providing feedback. Begins to incorporate constructive elements in comments.",
+                        "Delivers clear and organised feedback. Demonstrates a growing ability to balance positive and constructive feedback.",
+                        "Provides detailed and well-structured feedback. Shows proficiency in offering constructive criticism and praise.",
+                        "Analyses performance comprehensively. Provides insightful and actionable feedback.",
+                        "Generates feedback that contributes to individual and team development. Exhibits a high level of expertise in giving constructive comments.",
+                        "Consistently delivers feedback with strategic insights. Guides others in giving effective feedback.",
+                        "Demonstrates leadership in feedback practices. Develops and implements feedback strategies for team improvement.",
+                        "Shapes the organisation's feedback vision. Innovates feedback processes for continuous improvement.",
+                        "Defines industry standards in feedback. Transforms feedback into a strategic tool for individual and organisational growth."
+                    ];
+                    break;
+                case 'ambition':
+                    descriptions = [
+                        "Sets simple goals for personal and professional growth. Requires guidance in goal setting.",
+                        "Demonstrates improvement in goal-setting skills. Begins to pursue more ambitious objectives.",
+                        "Sets clear and achievable goals. Demonstrates commitment to personal and professional advancement.",
+                        "Sets challenging and realistic goals. Shows proficiency in pursuing ambitious objectives.",
+                        "Pursues ambitious goals with determination. Achieves significant milestones in personal and professional growth.",
+                        "Sets and achieves ambitious goals consistently. Inspires others through their ambitious pursuits.",
+                        "Consistently sets and exceeds high standards for personal and professional growth. Guides others in effective goal-setting strategies.",
+                        "Demonstrates leadership in fostering a culture of ambition. Develops and implements strategies for ambitious goal attainment.",
+                        "Shapes the organisation's ambition vision. Innovates processes to inspire and support ambitious goals.",
+                        "Defines industry standards in fostering ambition. Transforms ambition into a strategic asset for the organisation."
+                    ];
+                    break;
+                default:
+                    descriptions = [];
+            }
+
+            const levelIndex = Math.ceil(value / 10 * descriptions.length) - 1;
+            return descriptions[levelIndex];
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Collect user details
+            const name = document.getElementById("name").value;
+            
+            // Collect scores
+            const delegation = document.getElementById("delegation").value;
+            const problemSolver = document.getElementById("problemSolver").value;
+            const teamwork = document.getElementById("teamwork").value;
+            const feedback = document.getElementById("feedback").value;
+            const ambition = document.getElementById("ambition").value;
+
+            // Create CSV content
+            const csvContent = `Name,Category,Score,Description\n${name},Delegation,${delegation},"${getLevelText(delegation, 'delegation')} - ${getLevelDescription(delegation, 'delegation')}"\n${name},Problem Solver,${problemSolver},"${getLevelText(problemSolver, 'problemSolver')} - ${getLevelDescription(problemSolver, 'problemSolver')}"\n${name},Teamwork,${teamwork},"${getLevelText(teamwork, 'teamwork')} - ${getLevelDescription(teamwork, 'teamwork')}"\n${name},Feedback,${feedback},"${getLevelText(feedback, 'feedback')} - ${getLevelDescription(feedback, 'feedback')}"\n${name},Ambition,${ambition},"${getLevelText(ambition, 'ambition')} - ${getLevelDescription(ambition, 'ambition')}"`;
+
+            // Create a Blob and download link
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "self_assessment_scores.csv";
+
+            // Append link to the body, click it, and remove it
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+
+</body>
+</html>
