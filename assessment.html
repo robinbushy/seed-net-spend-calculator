@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Assessment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        output {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Self-Assessment</h1>
+    
+    <form id="assessmentForm" onsubmit="submitForm(event)">
+        
+        <!-- Name -->
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Delegation -->
+        <label for="delegation">Delegation Skills:</label>
+        <input type="range" id="delegation" name="delegation" min="1" max="10" value="1" oninput="updateOutput('delegation', 'delegationOutput', 'delegationDescription')" required>
+        <output id="delegationOutput">Level 1: Basic Delegator</output>
+        <p id="delegationDescription">Assigns simple tasks to team members. Requires guidance in effective task allocation.</p>
+
+        <!-- Problem Solver -->
+        <label for="problemSolver">Problem Solving Skills:</label>
+        <input type="range" id="problemSolver" name="problemSolver" min="1" max="10" value="1" oninput="updateOutput('problemSolver', 'problemSolverOutput', 'problemSolverDescription')" required>
+        <output id="problemSolverOutput">Level 1: Basic Problem Solver</output>
+        <p id="problemSolverDescription">Identifies simple issues and proposes basic solutions. May require guidance in problem-solving approaches.</p>
+
+        <!-- Teamwork -->
+        <label for="teamwork">Teamwork Skills:</label>
+        <input type="range" id="teamwork" name="teamwork" min="1" max="10" value="1" oninput="updateOutput('teamwork', 'teamworkOutput', 'teamworkDescription')" required>
+        <output id="teamworkOutput">Level 1: Basic Team Player</output>
+        <p id="teamworkDescription">Participates in team activities and projects. Requires guidance in collaborative efforts.</p>
+
+        <!-- Feedback -->
+        <label for="feedback">Feedback Skills:</label>
+        <input type="range" id="feedback" name="feedback" min="1" max="10" value="1" oninput="updateOutput('feedback', 'feedbackOutput', 'feedbackDescription')" required>
+        <output id="feedbackOutput">Level 1: Basic Feedback Provider</output>
+        <p id="feedbackDescription">Provides basic feedback in a straightforward manner. May require guidance on giving constructive comments.</p>
+
+        <!-- Ambition -->
+        <label for="ambition">Ambition:</label>
+        <input type="range" id="ambition" name="ambition" min="1" max="10" value="1" oninput="updateOutput('ambition', 'ambitionOutput', 'ambitionDescription')" required>
+        <output id="ambitionOutput">Level 1: Basic Ambition</output>
+        <p id="ambitionDescription">Sets simple goals for personal and professional growth. Requires guidance in goal setting.</p>
+
+        <!-- Analytical Skills -->
+        <label for="analyticalSkills">Analytical Skills:</label>
+        <input type="range" id="analyticalSkills" name="analyticalSkills" min="1" max="10" value="1" oninput="updateOutput('analyticalSkills', 'analyticalSkillsOutput', 'analyticalSkillsDescription')" required>
+        <output id="analyticalSkillsOutput">Level 1: Basic Analytical Skills</output>
+        <p id="analyticalSkillsDescription">Demonstrates basic ability to analyse simple data sets. Requires guidance in understanding data.</p>
+
+        <!-- Decision Making Skills -->
+        <label for="decisionMakingSkills">Decision Making Skills:</label>
+        <input type="range" id="decisionMakingSkills" name="decisionMakingSkills" min="1" max="10" value="1" oninput="updateOutput('decisionMakingSkills', 'decisionMakingSkillsOutput', 'decisionMakingSkillsDescription')" required>
+        <output id="decisionMakingSkillsOutput">Level 1: Basic Decision Making Skills</output>
+        <p id="decisionMakingSkillsDescription">Makes simple decisions with guidance. Requires assistance in weighing options.</p>
+
+        <!-- Decisiveness -->
+        <label for="decisiveness">Decisiveness:</label>
+        <input type="range" id="decisiveness" name="decisiveness" min="1" max="10" value="1" oninput="updateOutput('decisiveness', 'decisivenessOutput', 'decisivenessDescription')" required>
+        <output id="decisivenessOutput">Level 1: Basic Decisiveness</output>
+        <p id="decisivenessDescription">Requires time to make decisions. May hesitate in taking decisive actions.</p>
+
+        <!-- Emotional Intelligence -->
+        <label for="emotionalIntelligence">Emotional Intelligence:</label>
+        <input type="range" id="emotionalIntelligence" name="emotionalIntelligence" min="1" max="10" value="1" oninput="updateOutput('emotionalIntelligence', 'emotionalIntelligenceOutput', 'emotionalIntelligenceDescription')" required>
+        <output id="emotionalIntelligenceOutput">Level 1: Basic Emotional Intelligence</output>
+        <p id="emotionalIntelligenceDescription">Recognises basic emotions in oneself and others. May struggle with managing emotional reactions.</p>
+
+        <!-- Empathy -->
+        <label for="empathy">Empathy:</label>
+        <input type="range" id="empathy" name="empathy" min="1" max="10" value="1" oninput="updateOutput('empathy', 'empathyOutput', 'empathyDescription')" required>
+        <output id="empathyOutput">Level 1: Basic Empathy</output>
+        <p id="empathyDescription">Demonstrates an awareness of others' feelings. May need guidance in expressing empathy appropriately.</p>
+
+        <!-- Energy -->
+        <label for="energy">Energy:</label>
+        <input type="range" id="energy" name="energy" min="1" max="10" value="1" oninput="updateOutput('energy', 'energyOutput', 'energyDescription')" required>
+        <output id="energyOutput">Level 1: Basic Energy</output>
+        <p id="energyDescription">Demonstrates basic enthusiasm for tasks. May need encouragement to maintain consistent energy levels.</p>
+
+        <!-- Initiative -->
+        <label for="initiative">Initiative:</label>
+        <input type="range" id="initiative" name="initiative" min="1" max="10" value="1" oninput="updateOutput('initiative', 'initiativeOutput', 'initiativeDescription')" required>
+        <output id="initiativeOutput">Level 1: Basic Initiative</output>
+        <p id="initiativeDescription">Demonstrates a willingness to take on assigned tasks. Requires clear instructions to take initiative.</p>
+
+        <!-- Organisational Skills -->
+        <label for="organisationalSkills">Organisational Skills:</label>
+        <input type="range" id="organisationalSkills" name="organisationalSkills" min="1" max="10" value="1" oninput="updateOutput('organisationalSkills', 'organisationalSkillsOutput', 'organisationalSkillsDescription')" required>
+        <output id="organisationalSkillsOutput">Level 1: Basic Organisational Skills</output>
+        <p id="organisationalSkillsDescription">Completes tasks with guidance and support. Requires assistance in managing time and resources.</p>
+
+        <input type="submit" value="Submit">
+    
+    </form>
+
+    <script>
+        function updateOutput(inputId, outputId, descriptionId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            const description = document.getElementById(descriptionId);
+            const level = getLevelText(input.value);
+            const levelDescription = getLevelDescription(input.value);
+            output.textContent = level;
+            description.textContent = levelDescription;
+        }
+
+        function getLevelText(value) {
+            const levels = [
+                "Basic",
+                "Developing",
+                "Competent",
+                "Proficient",
+                "Advanced",
+                "Highly Skilled",
+                "Expert",
+                "Strategic",
+                "Visionary",
+                "Visionary"
+            ];
+
+            const levelIndex = Math.ceil(value / 10 * levels.length) - 1;
+            return `Level ${levelIndex + 1}: ${levels[levelIndex]}`;
+        }
+
+        function getLevelDescription(value) {
+            const descriptions = [
+                // ... (Existing descriptions)
+                "Defines industry standards in fostering high energy. Transforms energy into a strategic asset for the organisation.",
+                // ... (New descriptions for Initiative and Organisational Skills)
+            ];
+
+            const levelIndex = Math.ceil(value / 10 * descriptions.length) - 1;
+            return descriptions[levelIndex];
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Collect user information
+            const name = document.getElementById("name").value;
+
+            // Collect scores
+            const delegation = document.getElementById("delegation").value;
+            const problemSolver = document.getElementById("problemSolver").value;
+            const teamwork = document.getElementById("teamwork").value;
+            const feedback = document.getElementById("feedback").value;
+            const ambition = document.getElementById("ambition").value;
+            const analyticalSkills = document.getElementById("analyticalSkills").value;
+            const decisionMakingSkills = document.getElementById("decisionMakingSkills").value;
+            const decisiveness = document.getElementById("decisiveness").value;
+            const emotionalIntelligence = document.getElementById("emotionalIntelligence").value;
+            const empathy = document.getElementById("empathy").value;
+            const energy = document.getElementById("energy").value;
+            const initiative = document.getElementById("initiative").value;
+            const organisationalSkills = document.getElementById("organisationalSkills").value;
+
+            // Create CSV content
+            const csvContent = `Name,Delegation,Problem Solver,Teamwork,Feedback,Ambition,Analytical Skills,Decision Making Skills,Decisiveness,Emotional Intelligence,Empathy,Energy,Initiative,Organisational Skills\n${name},${delegation},${problemSolver},${teamwork},${feedback},${ambition},${analyticalSkills},${decisionMakingSkills},${decisiveness},${emotionalIntelligence},${empathy},${energy},${initiative},${organisationalSkills},"`;
+
+            // Create a Blob and download link
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "self_assessment_scores.csv";
+
+            // Append link to the body, click it, and remove it
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+
+</body>
+</html>
