@@ -111,24 +111,6 @@
         <output id="empathyOutput">Level 1: Basic Empathy</output>
         <p id="empathyDescription">Demonstrates an awareness of others' feelings. May need guidance in expressing empathy appropriately.</p>
 
-        <!-- Energy -->
-        <label for="energy">Energy:</label>
-        <input type="range" id="energy" name="energy" min="1" max="10" value="1" oninput="updateOutput('energy', 'energyOutput', 'energyDescription')" required>
-        <output id="energyOutput">Level 1: Basic Energy</output>
-        <p id="energyDescription">Demonstrates basic enthusiasm for tasks. May need encouragement to maintain consistent energy levels.</p>
-
-        <!-- Initiative -->
-        <label for="initiative">Initiative:</label>
-        <input type="range" id="initiative" name="initiative" min="1" max="10" value="1" oninput="updateOutput('initiative', 'initiativeOutput', 'initiativeDescription')" required>
-        <output id="initiativeOutput">Level 1: Basic Initiative</output>
-        <p id="initiativeDescription">Demonstrates a willingness to take on assigned tasks. Requires clear instructions to take initiative.</p>
-
-        <!-- Organisational Skills -->
-        <label for="organisationalSkills">Organisational Skills:</label>
-        <input type="range" id="organisationalSkills" name="organisationalSkills" min="1" max="10" value="1" oninput="updateOutput('organisationalSkills', 'organisationalSkillsOutput', 'organisationalSkillsDescription')" required>
-        <output id="organisationalSkillsOutput">Level 1: Basic Organisational Skills</output>
-        <p id="organisationalSkillsDescription">Completes tasks with guidance and support. Requires assistance in managing time and resources.</p>
-
         <input type="submit" value="Submit">
     
     </form>
@@ -164,9 +146,16 @@
 
         function getLevelDescription(value) {
             const descriptions = [
-                // ... (Existing descriptions)
-                "Defines industry standards in fostering high energy. Transforms energy into a strategic asset for the organisation.",
-                // ... (New descriptions for Initiative and Organisational Skills)
+                "Assigns simple tasks to team members. Requires guidance in effective task allocation.",
+                "Demonstrates improvement in assigning tasks. Begins to consider team members' strengths.",
+                "Delegates tasks effectively, considering team capabilities. Demonstrates growing trust in team members' abilities.",
+                "Delegates complex tasks with clarity and purpose. Shows proficiency in empowering team members.",
+                "Delegates strategically, aligning tasks with team members' strengths. Provides guidance and support when necessary.",
+                "Empowers team members to take ownership of projects. Contributes to the development of others through delegation.",
+                "Consistently delegates effectively in complex situations. Guides others in mastering delegation techniques.",
+                "Demonstrates leadership in delegation. Develops and implements delegation strategies for the organisation.",
+                "Shapes the organisation's delegation vision. Innovates delegation processes for enhanced efficiency.",
+                "Defines industry standards in delegation. Transforms delegation into a strategic asset for the organisation."
             ];
 
             const levelIndex = Math.ceil(value / 10 * descriptions.length) - 1;
@@ -190,12 +179,9 @@
             const decisiveness = document.getElementById("decisiveness").value;
             const emotionalIntelligence = document.getElementById("emotionalIntelligence").value;
             const empathy = document.getElementById("empathy").value;
-            const energy = document.getElementById("energy").value;
-            const initiative = document.getElementById("initiative").value;
-            const organisationalSkills = document.getElementById("organisationalSkills").value;
 
             // Create CSV content
-            const csvContent = `Name,Delegation,Problem Solver,Teamwork,Feedback,Ambition,Analytical Skills,Decision Making Skills,Decisiveness,Emotional Intelligence,Empathy,Energy,Initiative,Organisational Skills\n${name},${delegation},${problemSolver},${teamwork},${feedback},${ambition},${analyticalSkills},${decisionMakingSkills},${decisiveness},${emotionalIntelligence},${empathy},${energy},${initiative},${organisationalSkills},"`;
+            const csvContent = `Name,Delegation,Problem Solver,Teamwork,Feedback,Ambition,Analytical Skills,Decision Making Skills,Decisiveness,Emotional Intelligence,Empathy\n${name},${delegation},${problemSolver},${teamwork},${feedback},${ambition},${analyticalSkills},${decisionMakingSkills},${decisiveness},${emotionalIntelligence},${empathy},"`;
 
             // Create a Blob and download link
             const blob = new Blob([csvContent], { type: "text/csv" });
