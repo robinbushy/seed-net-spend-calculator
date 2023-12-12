@@ -3,66 +3,128 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Title reflecting the company branding -->
   <title>Seed's Net Revenue % Calculator</title>
+  
+  <!-- Font link for 'Outfit', which appears to be the brand's chosen typeface -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon - Assuming you have a favicon that represents your brand -->
+  <link rel="icon" type="image/png" href="/path-to-your/favicon.png">
+  
+  <!-- Stylesheet -->
   <style>
-    body {
-      font-family: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #EFF1F3;
-      text-align: center;
+    /* Reset some default styles for a clean slate */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Apply brand fonts and colors */
+    body, html {
+      height: 100%;
+      font-family: 'Outfit', sans-serif;
+      background-color: #EFF1F3; /* Seed's brand light background color */
+      color: #2A3C54; /* Seed Indigo for text */
+      line-height: 1.6;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
 
+    /* Styling for the calculator container to match the brand's aesthetic */
     #calculator-container {
-      background-color: #fff;
-      padding: 30px;
+      background-color: #FFFFFF; /* Flash White for container */
+      padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
+      width: 90%;
+      max-width: 600px;
     }
 
+    /* Title Styles */
     #title {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 2rem; /* 24px */
+      font-weight: 700; /* Bold weight as per brand guidelines */
+      color: #2A3C54; /* Seed Indigo for title */
       margin-bottom: 20px;
     }
 
+    /* Additional styles for inputs, labels, and buttons using brand colors */
     label {
-      font-size: 18px;
-      margin-bottom: 10px;
-      display: block;
+      font-size: 1.125rem; /* 18px */
+      color: #2A3C54; /* Seed Indigo */
+      margin: 10px 0;
     }
 
     input[type="range"] {
-      width: 80%;
-      margin: 10px 0;
+      -webkit-appearance: none; /* Override default appearance */
+      width: 100%; /* Full-width */
+      margin: 18px 0; /* Spacing */
+      background: transparent; /* No background */
     }
 
+    /* Custom styles for the slider thumb and track */
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 4px;
+      background: #2A3C54; /* Seed Indigo for track */
+      border-radius: 2px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #4895F6; /* Blueberry Blue for thumb */
+      cursor: pointer;
+      margin-top: -6px; /* Align thumb with the track */
+    }
+
+    /* Mozilla range styles */
+    input[type="range"]::-moz-range-track {
+      height: 4px;
+      background: #2A3C54; /* Seed Indigo for track */
+      border-radius: 2px;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #4895F6; /* Blueberry Blue for thumb */
+      cursor: pointer;
+    }
+
+    /* Currency formatting for number display */
+    .currency {
+      font-size: 1.25rem; /* 20px */
+      margin: 10px 0;
+      display: block;
+    }
+
+    /* Separate section for the output to distinguish it from the input */
+    #output-section {
+      margin-top: 30px; /* Space above the output section */
+      padding-top: 20px; /* Space inside the output section */
+      border-top: 2px solid #2A3C54; /* Visual separation line */
+    }
+
+    /* Centered net revenue value */
     #sliderValue {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    #result {
-      margin-top: 30px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    #manualInput {
-      width: 80%;
-      padding: 10px;
+      text-align: center;
+      display: block;
       margin: 10px 0;
-      box-sizing: border-box;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      font-size: 1rem;
     }
+
+    /* Additional styles here... */
+
   </style>
 </head>
 
