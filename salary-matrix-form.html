@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Assessment Form - Seed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .logo img {
+            max-width: 200px; /* Control the size of the logo here */
+            height: auto;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #2A3C54; /* Seed Indigo */
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #2A3C54; /* Seed Indigo */
+            font-weight: 600;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .slider-ticks {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            bottom: -20px;
+        }
+        .slider-ticks span {
+            position: relative;
+            text-align: center;
+            color: #aaa;
+            font-size: 10px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            margin: 20px 0; /* Adjust if needed */
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4895F6; /* Blueberry Blue */
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            position: relative;
+            z-index: 2; /* Ensure thumb is above the track */
+            /* Adjust margin-top to ensure thumb sits on top of the track */
+            margin-top: -11px; /* Half the thumb height to align it centered on the track */
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #ddd;
+            height: 2px;
+            border-radius: 5px;
+            position: relative;
+            top: 10px; /* Adjust top to lift the track up to meet the thumb */
+            z-index: 1; /* Ensure track is below the thumb */
+        }
+        /* Apply similar styles for other browsers */
+        input[type="range"]::-moz-range-thumb {
+            /*...*/
+        }
+        input[type="range"]::-moz-range-track {
+            /*...*/
+        }
+        input[type="range"]::-ms-thumb {
+            /*...*/
+        }
+        input[type="range"]::-ms-track {
+            /*...*/
+        }
+        output {
+            display: block;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #2A3C54; /* Seed Indigo */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #345B72; /* Darker Shade of Seed Indigo */
+        }
+    </style>
+</head>
+
+
+
+
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <!-- Include your logo here -->
+            <img src="https://helloseed.co.uk/logo-on-white.png" alt="Seed Logo">
+        </div>
+        <h1>Seed Matrix Form</h1>
+        <!-- Your form content goes here -->
+
+
+    <form id="assessmentForm" onsubmit="submitForm(event)">
+
+        <!-- Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <br>
+
+        <!-- Delegation -->
+        <label for="delegation"><b>Delegation:</b></label>
+        <input type="range" id="delegation" name="delegation" min="1" max="10" value="1" oninput="updateOutput('delegation', 'delegationOutput', 'delegationDescription')" required>
+        <output id="delegationOutput">Level 1: Basic Delegator</output>
+        <p id="delegationDescription">Assigns simple tasks to team members. Requires guidance in effective task allocation.</p>
+
+        <br>
+
+        <!-- Problem Solver -->
+        <label for="problemSolver"><b>Problem Solver:</b></label>
+        <input type="range" id="problemSolver" name="problemSolver" min="1" max="10" value="1" oninput="updateOutput('problemSolver', 'problemSolverOutput', 'problemSolverDescription')" required="" data-dashlane-rid="f582be79e28368f9" data-form-type="other">
+        <output id="problemSolverOutput">Level 1: Basic Problem Solver</output>
+        <p id="problemSolverDescription">Identifies simple issues and proposes basic solutions. May require guidance in problem-solving approaches.</p>
+
+        <br>
+
+        <!-- Teamwork -->
+        <label for="teamwork"><b>Teamwork:</b></label>
+        <input type="range" id="teamwork" name="teamwork" min="1" max="10" value="1" oninput="updateOutput('teamwork', 'teamworkOutput', 'teamworkDescription')" required="" data-dashlane-rid="9496e864a1e6c18d" data-form-type="other">
+        <output id="teamworkOutput">Level 1: Basic Team Player</output>
+        <p id="teamworkDescription">Participates in team activities and projects. Requires guidance in collaborative efforts.</p>
+
+        <br>
+
+        <!-- Feedback -->
+        <label for="feedback"><b>Feedback:</b></label>
+        <input type="range" id="feedback" name="feedback" min="1" max="10" value="1" oninput="updateOutput('feedback', 'feedbackOutput', 'feedbackDescription')" required="" data-dashlane-rid="d5bdf868e090bf8b" data-form-type="other">
+        <output id="feedbackOutput">Level 1: Basic Feedback Provider</output>
+        <p id="feedbackDescription">Provides basic feedback in a straightforward manner. May require guidance on giving constructive comments.</p>
+
+        <br>
+
+        <!-- Ambition -->
+        <label for="ambition"><b>Ambition:</b></label>
+        <input type="range" id="ambition" name="ambition" min="1" max="10" value="1" oninput="updateOutput('ambition', 'ambitionOutput', 'ambitionDescription')" required="" data-dashlane-rid="18555426512ccab2" data-form-type="other">
+        <output id="ambitionOutput">Level 1: Basic Ambition</output>
+        <p id="ambitionDescription">Sets simple goals for personal and professional growth. Requires guidance in goal setting.</p>
+
+        <br>
+
+        <!-- Analytical Skills -->
+        <label for="analyticalSkills"><b>Analytical Skills:</b></label>
+        <input type="range" id="analyticalSkills" name="analyticalSkills" min="1" max="10" value="1" oninput="updateOutput('analyticalSkills', 'analyticalSkillsOutput', 'analyticalSkillsDescription')" required>
+        <output id="analyticalSkillsOutput">Level 1: Basic Analytical Skills</output>
+        <p id="analyticalSkillsDescription">Demonstrates basic ability to analyse simple data sets. Requires guidance in understanding data.</p>
+        <br>
+
+        <!-- Decision Making Skills -->
+        <label for="decisionMaking"><b>Decision Making Skills:</b></label>
+        <input type="range" id="decisionMaking" name="decisionMaking" min="1" max="10" value="1" oninput="updateOutput('decisionMaking', 'decisionMakingOutput', 'decisionMakingDescription')" required="">
+        <output id="decisionMakingOutput">Level 1: Basic Decision Making Skills</output>
+        <p id="decisionMakingDescription">Makes simple decisions with guidance. Requires assistance in weighing options.</p>
+        <br>
+
+        <!-- Decisiveness -->
+        <label for="decisiveness"><b>Decisiveness:</b></label>
+        <input type="range" id="decisiveness" name="decisiveness" min="1" max="10" value="1" oninput="updateOutput('decisiveness', 'decisivenessOutput', 'decisivenessDescription')" required="">
+        <output id="decisivenessOutput">Level 1: Basic Decisiveness</output>
+        <p id="decisivenessDescription">Requires time to make decisions. May hesitate in taking decisive actions.</p>
+        <br>
+
+        <!-- Emotional Intelligence -->
+        <label for="emotionalIntelligence"><b>Emotional Intelligence:</b></label>
+        <input type="range" id="emotionalIntelligence" name="emotionalIntelligence" min="1" max="10" value="1" oninput="updateOutput('emotionalIntelligence', 'emotionalIntelligenceOutput', 'emotionalIntelligenceDescription')" required="">
+        <output id="emotionalIntelligenceOutput">Level 1: Basic Emotional Intelligence</output>
+        <p id="emotionalIntelligenceDescription">Recognises basic emotions in oneself and others. May struggle with managing emotional reactions.</p>
+        <br>
+
+        <!-- Empathy -->
+        <label for="empathy"><b>Empathy:</b></label>
+        <input type="range" id="empathy" name="empathy" min="1" max="10" value="1" oninput="updateOutput('empathy', 'empathyOutput', 'empathyDescription')" required="">
+        <output id="empathyOutput">Level 1: Basic Empathy</output>
+        <p id="empathyDescription">Demonstrates an awareness of others' feelings. May need guidance in expressing empathy appropriately.</p>
+        <br>
+
+        <!-- Energy -->
+        <label for="energy"><b>Energy:</b></label>
+        <input type="range" id="energy" name="energy" min="1" max="10" value="1" oninput="updateOutput('energy', 'energyOutput', 'energyDescription')" required="">
+        <output id="energyOutput">Level 1: Basic Energy</output>
+        <p id="energyDescription">Demonstrates basic enthusiasm for tasks. May need encouragement to maintain consistent energy levels.</p>
+        <br>
+
+        <!-- Initiative -->
+        <label for="initiative"><b>Initiative:</b></label>
+        <input type="range" id="initiative" name="initiative" min="1" max="10" value="1" oninput="updateOutput('initiative', 'initiativeOutput', 'initiativeDescription')" required="">
+        <output id="initiativeOutput">Level 1: Basic Initiative</output>
+        <p id="initiativeDescription">Demonstrates a willingness to take on assigned tasks. Requires clear instructions to take initiative.</p>
+        <br>
+
+        <!-- Organisational Skills -->
+        <label for="organisationalSkills"><b>Organisational Skills:</b></label>
+        <input type="range" id="organisationalSkills" name="organisationalSkills" min="1" max="10" value="1" oninput="updateOutput('organisationalSkills', 'organisationalSkillsOutput', 'organisationalSkillsDescription')" required="">
+        <output id="organisationalSkillsOutput">Level 1: Basic Organisational Skills</output>
+        <p id="organisationalSkillsDescription">Completes tasks with guidance and support. Requires assistance in managing time and resources.</p>
+        <br>
+
+        <!-- Strong Communication -->
+        <label for="strongCommunication"><b>Strong Communication:</b></label>
+        <input type="range" id="strongCommunication" name="strongCommunication" min="1" max="10" value="1" oninput="updateOutput('strongCommunication', 'strongCommunicationOutput', 'strongCommunicationDescription')" required="">
+        <output id="strongCommunicationOutput">Level 1: Basic Communication</output>
+        <p id="strongCommunicationDescription">Communicates simple ideas with guidance. May struggle with conveying information clearly.</p>
+        <br>
+
+        <!-- Conflict Resolution -->
+        <label for="conflictResolution"><b>Conflict Resolution:</b></label>
+        <input type="range" id="conflictResolution" name="conflictResolution" min="1" max="10" value="1" oninput="updateOutput('conflictResolution', 'conflictResolutionOutput', 'conflictResolutionDescription')" required="">
+        <output id="conflictResolutionOutput">Level 1: Basic Conflict Handling</output>
+        <p id="conflictResolutionDescription">Identifies conflicts but may struggle to address them. Requires guidance in resolving simple conflicts.</p>
+        <br>
+
+        <!-- Quick Learner -->
+        <label for="quickLearner"><b>Quick Learner:</b></label>
+        <input type="range" id="quickLearner" name="quickLearner" min="1" max="10" value="1" oninput="updateOutput('quickLearner', 'quickLearnerOutput', 'quickLearnerDescription')" required="">
+        <output id="quickLearnerOutput">Level 1: Basic Learning</output>
+        <p id="quickLearnerDescription">Grasps fundamental concepts with guidance. Requires time and support to adapt to new information.</p>
+        <br>
+
+        <!-- Detail Oriented -->
+        <label for="detailOriented"><b>Detail Oriented:</b></label>
+        <input type="range" id="detailOriented" name="detailOriented" min="1" max="10" value="1" oninput="updateOutput('detailOriented', 'detailOrientedOutput', 'detailOrientedDescription')" required="">
+        <output id="detailOrientedOutput">Level 1: Basic Attention to Detail</output>
+        <p id="detailOrientedDescription">Notices basic details with guidance. Requires supervision to ensure accuracy.</p>
+        <br>
+
+        <!-- Coaching Skills -->
+        <label for="coachingSkills"><b>Coaching Skills:</b></label>
+        <input type="range" id="coachingSkills" name="coachingSkills" min="1" max="10" value="1" oninput="updateOutput('coachingSkills', 'coachingSkillsOutput', 'coachingSkillsDescription')" required="">
+        <output id="coachingSkillsOutput">Level 1: Basic Coaching</output>
+        <p id="coachingSkillsDescription">Provides basic guidance and support to colleagues. May require assistance in effectively conveying information.</p>
+        <br>
+
+        <!-- Motivating Others -->
+        <label for="motivatingOthers"><b>Motivating Others:</b></label>
+        <input type="range" id="motivatingOthers" name="motivatingOthers" min="1" max="10" value="1" oninput="updateOutput('motivatingOthers', 'motivatingOthersOutput', 'motivatingOthersDescription')" required="">
+        <output id="motivatingOthersOutput">Level 1: Basic Motivator</output>
+        <p id="motivatingOthersDescription">Provides basic encouragement to team members. May require assistance in understanding individual motivations.</p>
+        <br>
+
+        <!-- Strategic Thinking -->
+        <label for="strategicThinking"><b>Strategic Thinking:</b></label>
+        <input type="range" id="strategicThinking" name="strategicThinking" min="1" max="10" value="1" oninput="updateOutput('strategicThinking', 'strategicThinkingOutput', 'strategicThinkingDescription')" required="">
+        <output id="strategicThinkingOutput">Level 1: Basic Strategic Thinker</output>
+        <p id="strategicThinkingDescription">Understands basic strategic concepts. Requires guidance in connecting actions to broader goals.</p>
+        <br>
+
+        <!-- Vision/Planning -->
+        <label for="visionPlanning"><b>Vision/Planning:</b></label>
+        <input type="range" id="visionPlanning" name="visionPlanning" min="1" max="10" value="1" oninput="updateOutput('visionPlanning', 'visionPlanningOutput', 'visionPlanningDescription')" required="">
+        <output id="visionPlanningOutput">Level 1: Basic Planner</output>
+        <p id="visionPlanningDescription">Demonstrates basic planning skills. Requires guidance in organising tasks.</p>
+        <br>
+
+        <!-- Financial Awareness -->
+        <label for="financialAwareness"><b>Financial Awareness:</b></label>
+        <input type="range" id="financialAwareness" name="financialAwareness" min="1" max="10" value="1" oninput="updateOutput('financialAwareness', 'financialAwarenessOutput', 'financialAwarenessDescription')" required="">
+        <output id="financialAwarenessOutput">Level 1: Basic Financial Awareness</output>
+        <p id="financialAwarenessDescription">Demonstrates basic understanding of financial concepts. Requires guidance in budgeting and expense tracking.</p>
+        <br>
+
+        <!-- Entrepreneurship -->
+        <label for="entrepreneurship"><b>Entrepreneurship:</b></label>
+        <input type="range" id="entrepreneurship" name="entrepreneurship" min="1" max="10" value="1" oninput="updateOutput('entrepreneurship', 'entrepreneurshipOutput', 'entrepreneurshipDescription')" required>
+        <output id="entrepreneurshipOutput">Level 1: Basic Entrepreneurial Skills</output>
+        <p id="entrepreneurshipDescription">Shows basic understanding of entrepreneurship. May require guidance in identifying business opportunities.</p>
+        <br>
+
+        <!-- Visionary Thinking -->
+        <label for="visionaryThinking"><b>Visionary Thinking:</b></label>
+        <input type="range" id="visionaryThinking" name="visionaryThinking" min="1" max="10" value="1" oninput="updateOutput('visionaryThinking', 'visionaryThinkingOutput', 'visionaryThinkingDescription')" required>
+        <output id="visionaryThinkingOutput">Level 1: Basic Visionary Thinking</output>
+        <p id="visionaryThinkingDescription">Shows a basic understanding of future oriented concepts. May need guidance in connecting present actions to long term goals.</p>
+        <br>
+
+        <!-- Negotiating -->
+        <label for="negotiating"><b>Negotiating:</b></label>
+        <input type="range" id="negotiating" name="negotiating" min="1" max="10" value="1" oninput="updateOutput('negotiating', 'negotiatingOutput', 'negotiatingDescription')" required>
+        <output id="negotiatingOutput">Level 1: Basic Negotiating Skills</output>
+        <p id="negotiatingDescription">Demonstrates basic understanding of negotiation principles. May require guidance in simple negotiation scenarios.</p>
+        <br>
+
+        <!-- Reporting -->
+        <label for="reporting"><b>Reporting:</b></label>
+        <input type="range" id="reporting" name="reporting" min="1" max="10" value="1" oninput="updateOutput('reporting', 'reportingOutput', 'reportingDescription')" required>
+        <output id="reportingOutput">Level 1: Basic Reporting</output>
+        <p id="reportingDescription">Provides basic, factual reports. Presents data in a straightforward manner. May require guidance in interpreting data.</p>
+        <br>
+
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+  </div>
+
+    <script>
+        function updateOutput(inputId, outputId, descriptionId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            const description = document.getElementById(descriptionId);
+            const level = getLevelText(input.value, inputId);
+            const levelDescription = getLevelDescription(input.value, inputId);
+            output.textContent = level;
+            description.textContent = levelDescription;
+        }
+
+        function getLevelText(value, question) {
+            const levels = [
+                "Basic",
+                "Developing",
+                "Competent",
+                "Proficient",
+                "Advanced",
+                "Highly Skilled",
+                "Expert",
+                "Strategic",
+                "Visionary",
+                "Visionary"
+            ];
+
+            const levelIndex = Math.ceil(value / 10 * levels.length) - 1;
+            return `Level ${levelIndex + 1}: ${levels[levelIndex]} (${question})`;
+        }
+
+        function getLevelDescription(value, question) {
+            let descriptions;
+
+            switch (question) {
+                case 'delegation':
+                    descriptions = [
+                        "Assigns simple tasks to team members. Requires guidance in effective task allocation.",
+                        "Demonstrates improvement in assigning tasks. Begins to consider team members' strengths.",
+                        "Delegates tasks effectively, considering team capabilities. Demonstrates growing trust in team members' abilities.",
+                        "Delegates complex tasks with clarity and purpose. Shows proficiency in empowering team members.",
+                        "Delegates strategically, aligning tasks with team members' strengths. Provides guidance and support when necessary.",
+                        "Empowers team members to take ownership of projects. Contributes to the development of others through delegation.",
+                        "Consistently delegates effectively in complex situations. Guides others in mastering delegation techniques.",
+                        "Demonstrates leadership in delegation. Develops and implements delegation strategies for the organisation.",
+                        "Shapes the organisation's delegation vision. Innovates delegation processes for enhanced efficiency.",
+                        "Defines industry standards in delegation. Transforms delegation into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'problemSolver':
+                    descriptions = [
+                        "Identifies simple issues and proposes basic solutions. May require guidance in problem-solving approaches.",
+                        "Demonstrates improvement in problem analysis. Begins to consider multiple solutions to a problem.",
+                        "Effectively identifies and addresses common issues. Demonstrates growing proficiency in problem resolution.",
+                        "Analyses complex problems with attention to detail. Shows proficiency in implementing effective solutions.",
+                        "Tackles intricate issues with confidence. Provides innovative solutions to complex challenges.",
+                        "Contributes to strategic decision making through problem solving. Exhibits a high level of expertise in analytical thinking.",
+                        "Consistently resolves complex problems effectively. Guides others in mastering problem-solving techniques.",
+                        "Demonstrates leadership in problem solving. Develops and implements problem-solving strategies for the organisation.",
+                        "Shapes the organisation's problem-solving vision. Innovates problem-solving processes for enhanced efficiency.",
+                        "Defines industry standards in problem solving. Transforms problem solving into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'teamwork':
+                    descriptions = [
+                        "Participates in team activities and projects. Requires guidance in collaborative efforts.",
+                        "Demonstrates improvement in collaborative tasks. Begins to contribute ideas to team discussions.",
+                        "Works effectively within the team, contributing to common goals. Demonstrates growing proficiency in collaborative efforts.",
+                        "Collaborates seamlessly with team members. Shows proficiency in leveraging team strengths.",
+                        "Fosters a collaborative team environment. Provides support and guidance to team members.",
+                        "Actively contributes to team success. Exhibits leadership in collaborative efforts.",
+                        "Consistently contributes to high-performing teams. Guides others in effective teamwork strategies.",
+                        "Demonstrates leadership in fostering teamwork. Develops and implements strategies to enhance team collaboration.",
+                        "Shapes the organisation's teamwork vision. Innovates teamwork processes for enhanced efficiency.",
+                        "Defines industry standards in fostering teamwork. Transforms teamwork into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'feedback':
+                    descriptions = [
+                        "Provides basic feedback in a straightforward manner. May require guidance on giving constructive comments.",
+                        "Shows improvement in providing feedback. Begins to incorporate constructive elements in comments.",
+                        "Delivers clear and organised feedback. Demonstrates a growing ability to balance positive and constructive feedback.",
+                        "Provides detailed and well-structured feedback. Shows proficiency in offering constructive criticism and praise.",
+                        "Analyses performance comprehensively. Provides insightful and actionable feedback.",
+                        "Generates feedback that contributes to individual and team development. Exhibits a high level of expertise in giving constructive comments.",
+                        "Consistently delivers feedback with strategic insights. Guides others in giving effective feedback.",
+                        "Demonstrates leadership in feedback practices. Develops and implements feedback strategies for team improvement.",
+                        "Shapes the organisation's feedback vision. Innovates feedback processes for continuous improvement.",
+                        "Defines industry standards in feedback. Transforms feedback into a strategic tool for individual and organisational growth."
+                    ];
+                    break;
+                case 'ambition':
+                    descriptions = [
+                        "Sets simple goals for personal and professional growth. Requires guidance in goal setting.",
+                        "Demonstrates improvement in goal-setting skills. Begins to pursue more ambitious objectives.",
+                        "Sets clear and achievable goals. Demonstrates commitment to personal and professional advancement.",
+                        "Sets challenging and realistic goals. Shows proficiency in pursuing ambitious objectives.",
+                        "Pursues ambitious goals with determination. Achieves significant milestones in personal and professional growth.",
+                        "Sets and achieves ambitious goals consistently. Inspires others through their ambitious pursuits.",
+                        "Consistently sets and exceeds high standards for personal and professional growth. Guides others in effective goal-setting strategies.",
+                        "Demonstrates leadership in fostering a culture of ambition. Develops and implements strategies for ambitious goal attainment.",
+                        "Shapes the organisation's ambition vision. Innovates processes to inspire and support ambitious goals.",
+                        "Defines industry standards in fostering ambition. Transforms ambition into a strategic asset for the organisation."
+                    ];
+                    break;
+
+
+                case 'analyticalSkills':
+                       descriptions = [
+                           "Demonstrates basic ability to analyse simple data sets. Requires guidance in understanding data.",
+                           "Shows improvement in analysing more complex data. Begins to draw connections between data points.",
+                           "Analyses data sets effectively. Demonstrates a growing ability to identify patterns and trends.",
+                           "Analyses detailed and complex data sets. Shows proficiency in extracting valuable insights.",
+                           "Analyses and interprets complex data comprehensively. Provides insightful interpretations that contribute to decision making.",
+                           "Generates analyses that contribute significantly to strategic decisions. Exhibits a high level of expertise in data analysis.",
+                           "Consistently produces analyses with strategic insights. Guides others in effective data interpretation.",
+                           "Demonstrates leadership in utilising analytics for strategic purposes. Develops and implements analytical strategies for the organisation.",
+                           "Shapes the organisation's analytical vision. Innovates processes to enhance analytical capabilities.",
+                           "Defines industry standards in analytics. Transforms analytical capabilities into a strategic asset for the organisation."
+                       ];
+                       break;
+
+
+                 case 'decisionMaking':
+                     descriptions = [
+                         "Makes simple decisions with guidance. Requires assistance in weighing options.",
+                         "Shows improvement in making decisions independently. Begins to consider various factors in decision making.",
+                         "Makes sound decisions based on analysis. Demonstrates the ability to evaluate options effectively.",
+                         "Makes well informed decisions even in complex situations. Shows proficiency in balancing risks and benefits.",
+                         "Excels in making strategic decisions. Consistently weighs various factors for optimal outcomes.",
+                         "Makes decisions that significantly impact organisational success. Exhibits a high level of expertise in decision making.",
+                         "Consistently makes decisions with profound strategic insights. Guides others in effective decision making processes.",
+                         "Demonstrates leadership in utilising decisionmaking for strategic purposes. Develops and implements decision making strategies for the organisation.",
+                         "Shapes the organisation's decision making vision. Innovates processes to enhance decision making capabilities.",
+                         "Defines industry standards in decision making. Transforms decision making into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'decisiveness':
+                     descriptions = [
+                         "Requires time to make decisions. May hesitate in taking decisive actions.",
+                         "Shows improvement in making timely decisions. Begins to display a more decisive attitude.",
+                         "Makes timely decisions with confidence. Demonstrates a growing ability to take decisive actions.",
+                         "Consistently makes decisive choices in various situations. Displays proficiency in taking swift and effective actions.",
+                         "Excels in making bold and timely decisions. Demonstrates the ability to make tough choices under pressure.",
+                         "Makes decisions that significantly impact organisational outcomes. Exhibits a high level of expertise in decisive actions.",
+                         "Consistently demonstrates expert level decisiveness. Guides others in developing and applying decisive skills.",
+                         "Demonstrates leadership in utilising decisiveness strategically. Develops and implements strategies to enhance organisational decisiveness.",
+                         "Shapes the organisation's vision in decisiveness. Innovates processes to enhance decisive capabilities.",
+                         "Defines industry standards in decisiveness. Transforms decisiveness into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'emotionalIntelligence':
+                     descriptions = [
+                         "Recognises basic emotions in oneself and others. May struggle with managing emotional reactions.",
+                         "Shows improvement in understanding and managing emotions. Begins to empathise with others' feelings.",
+                         "Demonstrates a good understanding of emotional dynamics. Manages emotions effectively in various situations.",
+                         "Exhibits a high level of emotional self awareness. Demonstrates empathy and supports others emotionally.",
+                         "Excels in perceiving and understanding complex emotional situations. Effectively manages emotions in challenging circumstances.",
+                         "Applies emotional intelligence to positively influence team dynamics. Helps create a supportive and emotionally intelligent work environment.",
+                         "Consistently demonstrates expert level emotional intelligence. Guides others in developing and applying emotional intelligence skills.",
+                         "Utilises emotional intelligence strategically in leadership. Develops and implements strategies to enhance emotional intelligence across the organisation.",
+                         "Shapes the organisation's vision in emotional intelligence. Innovates processes to enhance emotional intelligence capabilities.",
+                         "Defines industry standards in emotional intelligence. Transforms emotional intelligence into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'empathy':
+                     descriptions = [
+                         "Demonstrates an awareness of others' feelings. May need guidance in expressing empathy appropriately.",
+                         "Shows improvement in understanding and responding to others' emotions. Begins to offer support and comfort to colleagues.",
+                         "Displays a good understanding of others' perspectives and feelings. Offers genuine support and empathy to colleagues.",
+                         "Exhibits a high level of empathy in various situations. Provides valuable emotional support to team members.",
+                         "Excels in understanding and connecting with others on a deep emotional level. Consistently demonstrates empathy in challenging situations.",
+                         "Uses empathy to build strong connections within the team. Helps create a workplace culture that values and priorities empathy.",
+                         "Consistently demonstrates expert level empathy. Guides and coachs others in developing empathetic skills.",
+                         "Integrates empathy into leadership and decision making. Develops and implements strategies to enhance empathy across the organisation.",
+                         "Shapes the organisation's vision in fostering empathy. Innovates processes to strengthen empathy at all levels.",
+                         "Defines industry standards in fostering empathy. Transforms empathy into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'energy':
+                     descriptions = [
+                         "Demonstrates basic enthusiasm for tasks. May need encouragement to maintain consistent energy levels.",
+                         "Shows improvement in sustaining enthusiasm throughout the workday. Begins to inspire others with positive energy.",
+                         "Maintains consistent energy levels in daily tasks. Inspires and motivates colleagues with positive energy.",
+                         "Exhibits high energy levels consistently. Effectively energises and engages the team.",
+                         "Excels in maintaining high energy during challenging situations. Inspires a positive and energetic work environment.",
+                         "Energises the team during demanding periods. Plays a key role in fostering a culture of enthusiasm and positivity.",
+                         "Consistently maintains expert level energy. Guides others in sustaining high energy levels.",
+                         "Integrates energy into leadership and decision making. Develops and implements strategies to enhance energy across the organisation.",
+                         "Shapes the organisation's vision in fostering high energy levels. Innovates processes to sustain enthusiasm at all levels.",
+                         "Defines industry standards in fostering high energy. Transforms energy into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'initiative':
+                     descriptions = [
+                         "Demonstrates a willingness to take on assigned tasks. Requires clear instructions to take initiative.",
+                         "Shows improvement in taking on additional responsibilities. Begins to identify opportunities for improvement.",
+                         "Takes initiative to address challenges without constant supervision. Identifies and suggests improvements in daily tasks.",
+                         "Proactively identifies opportunities for process improvement. Takes ownership of tasks and projects with minimal guidance.",
+                         "Takes the lead in proposing and implementing improvements. Encourages others to take initiative within their roles.",
+                         "Consistently goes beyond assigned tasks to improve processes. Inspires a culture of continuous improvement within the team.",
+                         "Demonstrates expert level initiative in addressing challenges. Guides others in taking proactive steps to improve processes.",
+                         "Integrates initiative into strategic planning. Develops and implements initiatives that drive organisational success.",
+                         "Shapes the organisation's vision in fostering a proactive culture. Innovates initiatives that transform the way tasks are approached.",
+                         "Defines industry standards in proactivity. Transforms initiative into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'organisationalSkills':
+                     descriptions = [
+                         "Completes tasks with guidance and support. Requires assistance in managing time and resources.",
+                         "Shows improvement in task management. Begins to prioritise tasks effectively.",
+                         "Manages tasks and time efficiently. Demonstrates the ability to meet deadlines consistently.",
+                         "Organises and prioritises tasks effectively. Ensures projects are completed on schedule.",
+                         "Manages complex projects with multiple components. Demonstrates efficiency in resource allocation.",
+                         "Excels in organising and coordinating team efforts. Implements systems to streamline organisational processes.",
+                         "Guides others in effective organisational strategies. Demonstrates excellence in orchestrating large scale projects.",
+                         "Integrates organisational skills into strategic planning. Develops and implements organisational strategies.",
+                         "Shapes the organisation's vision for efficient operations. Innovates organisational processes for future success.",
+                         "Defines industry standards in organisational efficiency. Transforms organisational skills into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'strongCommunication':
+                     descriptions = [
+                         "Communicates simple ideas with guidance. May struggle with conveying information clearly.",
+                         "Improves in expressing ideas more clearly. Begins to understand the importance of effective communication.",
+                         "Communicates clearly and concisely. Demonstrates the ability to convey information to others.",
+                         "Presents ideas in a structured and articulate manner. Listens actively and responds thoughtfully.",
+                         "Communicates complex ideas with clarity. Adapts communication style to different audiences.",
+                         "Excels in written and verbal communication. Conveys messages effectively in various contexts.",
+                         "Guides others in effective communication strategies. Demonstrates excellence in interpersonal communication.",
+                         "Integrates communication into strategic planning. Develops and implements communication strategies.",
+                         "Shapes the organisation's communication vision. Innovates communication processes for future success.",
+                         "Defines industry standards in communication. Transforms communication into a strategic asset for the organisation."
+                     ];
+                     break;
+
+                 case 'conflictResolution':
+                    descriptions = [
+                        "Identifies conflicts but may struggle to address them. Requires guidance in resolving simple conflicts.",
+                        "Shows improvement in recognising and addressing conflicts. Begins to apply basic conflict resolution techniques.",
+                        "Effectively addresses conflicts in a timely manner. Demonstrates the ability to find common ground.",
+                        "Resolves conflicts with a high degree of success. Utilises advanced techniques in conflict resolution.",
+                        "Handles complex conflicts with tact and diplomacy. Facilitates resolution among team members.",
+                        "Excels in mediating conflicts at all levels. Promotes a culture of open communication to prevent conflicts.",
+                        "Guides others in effective conflict resolution strategies. Consistently achieves positive outcomes in challenging situations.",
+                        "Integrates conflict resolution into strategic planning. Develops and implements conflict resolution strategies.",
+                        "Shapes the organisation's conflict resolution vision. Innovates conflict resolution processes for future success.",
+                        "Defines industry standards in conflict resolution. Transforms conflict resolution into a strategic asset for the organisation."
+                    ];
+                    break;
+
+
+                case 'quickLearner':
+                    descriptions = [
+                        "Grasps fundamental concepts with guidance. Requires time and support to adapt to new information.",
+                        "Shows improvement in understanding new concepts. Begins to adapt more quickly to changes.",
+                        "Learns new information effectively and applies it. Adapts to changes with a moderate learning curve.",
+                        "Picks up new concepts rapidly and independently. Applies new knowledge to enhance job performance.",
+                        "Quickly comprehends complex information. Demonstrates a high degree of adaptability.",
+                        "Excels in rapidly acquiring and applying knowledge. Keeps pace with evolving industry trends effortlessly.",
+                        "Guides others in effective learning strategies. Consistently stays ahead in understanding emerging trends.",
+                        "Integrates learning into strategic planning. Develops and implements learning initiatives for the team.",
+                        "Shapes the organisation's learning vision. Innovates learning processes for continuous improvement.",
+                        "Defines industry standards in continuous learning. Transforms learning into a strategic asset for the organisation."
+                    ];
+
+               break;
+
+                case 'detailOriented':
+                    descriptions = [
+                        "Notices basic details with guidance. Requires supervision to ensure accuracy.",
+                        "Improves in recognising and managing details. Begins to work more independently with attention to accuracy.",
+                        "Demonstrates clear focus on details. Consistently produces accurate work with minimal errors.",
+                        "Pays meticulous attention to intricate details. Identifies errors and discrepancies independently.",
+                        "Excels in managing complex details effectively. Consistently produces high quality, error free work.",
+                        "Demonstrates exceptional attention to nuanced details. Identifies potential issues before they arise.",
+                        "Guides others in mastering attention to detail. Ensures a culture of excellence in detail oriented work.",
+                        "Integrates attention to detail into strategic planning. Develops and implements initiatives for improving precision.",
+                        "Shapes the organisation's vision for detail oriented excellence. Innovates processes for maintaining the highest standards.",
+                        "Sets industry benchmarks for meticulous attention to detail. Transforms detail oriented work into a strategic advantage."
+                    ];
+                    break;
+
+
+                case 'coachingSkills':
+                    descriptions = [
+                        "Provides basic guidance and support to colleagues. May require assistance in effectively conveying information.",
+                        "Demonstrates improvement in guiding others. Begins to foster a supportive learning environment.",
+                        "Offers clear and organised guidance. Shows a growing ability to help others in their development.",
+                        "Provides detailed and well structured Coaching. Shows proficiency in addressing various developmental needs.",
+                        "Analyses complex learning needs and tailors guidance. Offers insightful advice to foster professional growth.",
+                        "Generates coaching strategies that contribute to overall development. Exhibits a high level of expertise in Coaching diverse individuals.",
+                        "Consistently produces Coaching approaches with strategic impact. Guides others in becoming effective coaches.",
+                        "Demonstrates leadership in Coaching initiatives. Develops and implements strategies to enhance coaching.",
+                        "Shapes the organisation's vision for effective Coaching. Innovates Coaching processes to meet evolving needs.",
+                        "Sets industry standards in Coaching excellence. Transforms Coaching into a key driver of organisational success."
+                    ];
+                    break;
+
+                case 'motivatingOthers':
+                    descriptions = [
+                        "Provides basic encouragement to team members. May require assistance in understanding individual motivations.",
+                        "Demonstrates improvement in recognising and acknowledging efforts. Begins to understand diverse sources of motivation.",
+                        "Effectively motivates others through clear communication. Shows a growing ability to tailor motivation to individuals.",
+                        "Inspires with detailed and well structured motivational approaches. Shows proficiency in adapting motivation to various situations.",
+                        "Analyses complex team dynamics and tailors motivation accordingly. Provides insightful motivation that aligns with organisational goals.",
+                        "Generates motivational strategies that contribute to team success. Exhibits a high level of expertise in understanding individual motivations.",
+                        "Consistently produces motivation with strategic impact. Guides others in becoming effective motivators.",
+                        "Demonstrates leadership in motivating teams. Develops and implements strategies to enhance team motivation.",
+                        "Shapes the organisation's vision for motivational excellence. Innovates motivational processes to meet evolving needs.",
+                        "Sets industry standards in motivational leadership. Transforms motivation into a key driver of organisational success."
+                    ];
+                    break;
+
+                case 'strategicThinking':
+                    descriptions = [
+                        "Understands basic strategic concepts. Requires guidance in connecting actions to broader goals.",
+                        "Demonstrates improvement in linking tasks to strategic objectives. Begins to consider the long term impact of decisions.",
+                        "Aligns daily tasks with overall strategic goals. Shows a growing ability to think beyond immediate challenges.",
+                        "Formulates detailed plans that contribute to strategic objectives. Demonstrates proficiency in anticipating and mitigating challenges.",
+                        "Analyses complex scenarios to shape strategic direction. Provides insightful contributions to strategic discussions.",
+                        "Generates strategies that contribute significantly to organisational success. Exhibits a high level of expertise in strategic decision making.",
+                        "Consistently produces strategic insights with broad impact. Guides others in developing advanced strategic thinking skills.",
+                        "Demonstrates leadership in shaping and executing strategic initiatives. Develops and implements strategies to achieve long term success.",
+                        "Shapes the organisation's vision for strategic excellence. Innovates strategic processes to stay ahead in the industry.",
+                        "Sets industry standards in strategic leadership. Transforms strategic thinking into a cornerstone of organisational success."
+                    ];
+                    break;
+
+                case 'visionPlanning':
+                    descriptions = [
+                        "Demonstrates basic planning skills. Requires guidance in organising tasks.",
+                        "Shows improvement in structuring plans. Begins to consider timelines and resources.",
+                        "Creates clear and organised plans. Demonstrates the ability to allocate resources effectively.",
+                        "Produces detailed plans with a focus on efficiency. Shows proficiency in adapting plans to changing circumstances.",
+                        "Designs complex plans with multiple dependencies. Provides insightful foresight to potential obstacles.",
+                        "Generates plans that contribute significantly to project success. Exhibits a high level of expertise in strategic planning.",
+                        "Consistently produces plans with strategic foresight. Guides others in developing advanced planning skills.",
+                        "Demonstrates leadership in shaping and executing strategic plans. Develops and implements planning strategies for long term success.",
+                        "Shapes the organisation's vision for planning excellence. Innovates planning processes to stay ahead in the industry.",
+                        "Sets industry standards in planning leadership. Transforms planning into a strategic asset for the organisation."
+                    ];
+                    break;
+
+                    case 'financialAwareness':
+                            descriptions = [
+                                "Demonstrates basic understanding of financial concepts. Requires guidance in budgeting and expense tracking.",
+                                "Shows improvement in comprehending financial reports. Begins to contribute to basic budgeting discussions.",
+                                "Analyses financial data and presents insights. Demonstrates the ability to contribute to budget planning.",
+                                "Produces detailed financial analyses. Shows proficiency in forecasting and financial planning.",
+                                "Analyses complex financial scenarios. Provides strategic insights for financial decision making.",
+                                "Generates financial strategies contributing to organisational success. Exhibits a high level of expertise in financial planning.",
+                                "Consistently produces insightful financial analyses. Guides others in understanding and interpreting financial data.",
+                                "Demonstrates leadership in shaping financial strategies. Develops and implements financial strategies for long term success.",
+                                "Shapes the organisation's vision for financial excellence. Innovates financial processes to stay ahead in the industry.",
+                                "Sets industry standards in financial leadership. Transforms financial management into a strategic asset for the organisation."
+                            ];
+                            break;
+
+
+                        case 'entrepreneurship':
+                            descriptions = [
+                                "Shows basic understanding of entrepreneurship. May require guidance in identifying business opportunities.",
+                                "Demonstrates improvement in recognizing market trends. Begins to contribute to brainstorming sessions for new ventures.",
+                                "Identifies and assesses business opportunities effectively. Contributes ideas for innovative projects.",
+                                "Successfully develops and executes business plans. Shows proficiency in risk assessment and mitigation.",
+                                "Recognizes and capitalises on complex business opportunities. Provides strategic insights for sustainable growth.",
+                                "Innovates business models contributing to organisational success. Exhibits a high level of expertise in navigating market dynamics.",
+                                "Consistently identifies and leads successful ventures. Guides others in entrepreneurial thinking and execution.",
+                                "Demonstrates leadership in shaping business strategies. Develops and implements initiatives for long term business success.",
+                                "Shapes the organisation's vision for entrepreneurial excellence. Innovates business processes to stay ahead in the industry.",
+                                "Sets industry standards in entrepreneurship. Transforms business innovation into a strategic asset for the organisation."
+                            ];
+                            break;
+
+
+
+                        case 'visionaryThinking':
+                            descriptions = [
+                                "Shows a basic understanding of future oriented concepts. May need guidance in connecting present actions to long term goals.",
+                                "Demonstrates improvement in envisioning future possibilities. Begins to contribute ideas for long term planning.",
+                                "Formulates and communicates a clear vision for the future. Shows an ability to align team efforts with long term objectives.",
+                                "Develops and refines a comprehensive vision for the organisation. Effectively communicates the vision to inspire others.",
+                                "Anticipates industry trends and shapes a forward looking strategy. Provides strategic insights that guide the organisation to success.",
+                                "Innovates and adapts the organisation to a changing landscape. Exhibits a high level of expertise in strategic foresight.",
+                                "Consistently develops and executes visionary initiatives. Guides others in thinking and planning for the future.",
+                                "Demonstrates leadership in shaping and executing visionary plans. Develops and implements initiatives for sustained long term success.",
+                                "Shapes the organisation's vision with industry wide impact. Innovates strategies that position the organisation as a leader.",
+                                "Sets industry standards in visionary leadership. Transforms visionary thinking into a key driver of organisational excellence."
+                            ];
+                            break;
+
+
+                        case 'negotiating':
+                            descriptions = [
+                                "Demonstrates basic understanding of negotiation principles. May require guidance in simple negotiation scenarios.",
+                                "Shows improvement in negotiating techniques. Begins to handle moderately complex negotiations with guidance.",
+                                "Negotiates effectively in a variety of situations. Demonstrates a growing ability to achieve win win outcomes.",
+                                "Excels in negotiating complex agreements. Consistently achieves favourable outcomes for the organisation.",
+                                "Analyses and navigates intricate negotiations with finesse. Demonstrates strategic thinking to secure advantageous deals.",
+                                "Leads negotiation teams with a high level of expertise. Successfully negotiates agreements that contribute to organisational success.",
+                                "Consistently achieves favourable outcomes in high stakes negotiations. Guides and coaches others in advanced negotiation techniques.",
+                                "Demonstrates leadership in shaping and executing negotiation strategies. Develops and implements negotiation tactics for organisational growth.",
+                                "Recognized as a specialist in complex negotiation scenarios. Innovates negotiation approaches that set industry benchmarks.",
+                                "Sets industry standards in negotiation expertise. Transforms negotiation into a strategic asset for organisational excellence."
+                            ];
+                            break;
+
+
+                        case 'reporting':
+                            descriptions = [
+                                "Provides basic, factual reports. Presents data in a straightforward manner. May require guidance in interpreting data.",
+                                "Demonstrates improvement in report structure. Begins to analyse data more comprehensively.",
+                                "Presents clear and organised reports. Demonstrates a growing ability to interpret data.",
+                                "Produces detailed and well structured reports. Shows proficiency in data analysis.",
+                                "Analyses complex data sets. Provides insightful interpretations.",
+                                "Generates reports that contribute to decision making. Exhibits a high level of data analysis expertise.",
+                                "Consistently produces reports with strategic insights. Guides others in data interpretation.",
+                                "Demonstrates leadership in reporting. Develops and implements reporting strategies.",
+                                "Shapes the organisation's reporting vision. Innovates reporting processes.",
+                                "Defines industry standards in reporting. Transforms reporting into a strategic asset for the organisation."
+                            ];
+                            break;
+
+
+                default:
+                    descriptions = [];
+            }
+
+            const levelIndex = Math.ceil(value / 10 * descriptions.length) - 1;
+            return descriptions[levelIndex];
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Collect user details
+            const name = document.getElementById("name").value;
+
+            // Collect scores
+            const delegation = document.getElementById("delegation").value;
+            const problemSolver = document.getElementById("problemSolver").value;
+            const teamwork = document.getElementById("teamwork").value;
+            const feedback = document.getElementById("feedback").value;
+            const ambition = document.getElementById("ambition").value;
+            const analyticalSkills = document.getElementById("analyticalSkills").value;
+            const decisionMaking = document.getElementById("decisionMaking").value;
+            const decisiveness = document.getElementById("decisiveness").value;
+            const emotionalIntelligence = document.getElementById("emotionalIntelligence").value;
+            const empathy = document.getElementById("empathy").value;
+            const energy = document.getElementById("energy").value;
+            const initiative = document.getElementById("initiative").value;
+            const organisationalSkills = document.getElementById("organisationalSkills").value;
+            const strongCommunication = document.getElementById("strongCommunication").value;
+            const conflictResolution = document.getElementById("conflictResolution").value;
+            const quickLearner = document.getElementById("quickLearner").value;
+            const detailOriented = document.getElementById("detailOriented").value;
+            const coachingSkills = document.getElementById("coachingSkills").value;
+            const motivatingOthers = document.getElementById("motivatingOthers").value;
+            const strategicThinking = document.getElementById("strategicThinking").value;
+            const visionPlanning = document.getElementById("visionPlanning").value;
+            const financialAwareness = document.getElementById("financialAwareness").value;
+            const entrepreneurship = document.getElementById("entrepreneurship").value;
+            const visionaryThinking = document.getElementById("visionaryThinking").value;
+            const negotiating = document.getElementById("negotiating").value;
+            const reporting = document.getElementById("reporting").value;
+
+
+            // Create CSV content
+            const csvContent = `Name,Category,Score,Description
+            \n${name},Delegation,${delegation},"${getLevelText(delegation, 'delegation')} - ${getLevelDescription(delegation, 'delegation')}"
+            \n${name},Problem Solver,${problemSolver},"${getLevelText(problemSolver, 'problemSolver')} - ${getLevelDescription(problemSolver, 'problemSolver')}"
+            \n${name},Teamwork,${teamwork},"${getLevelText(teamwork, 'teamwork')} - ${getLevelDescription(teamwork, 'teamwork')}"
+            \n${name},Feedback,${feedback},"${getLevelText(feedback, 'feedback')} - ${getLevelDescription(feedback, 'feedback')}"
+            \n${name},Ambition,${ambition},"${getLevelText(ambition, 'ambition')} - ${getLevelDescription(ambition, 'ambition')}"
+            \n${name},Analytical Skills,${analyticalSkills},"${getLevelText(analyticalSkills, 'analyticalSkills')} - ${getLevelDescription(analyticalSkills, 'analyticalSkills')}"
+            \n${name},Decision Making Skills,${decisionMaking},"${getLevelText(decisionMaking, 'decisionMaking')} - ${getLevelDescription(decisionMaking, 'decisionMaking')}"
+            \n${name},Decisiveness,${decisiveness},"${getLevelText(decisiveness, 'decisiveness')} - ${getLevelDescription(decisiveness, 'decisiveness')}"
+            \n${name},Emotional Intelligence,${emotionalIntelligence},"${getLevelText(emotionalIntelligence, 'emotionalIntelligence')} - ${getLevelDescription(emotionalIntelligence, 'emotionalIntelligence')}"
+            \n${name},Empathy,${empathy},"${getLevelText(empathy, 'empathy')} - ${getLevelDescription(empathy, 'empathy')}"
+            \n${name},Energy,${energy},"${getLevelText(energy, 'energy')} - ${getLevelDescription(energy, 'energy')}"
+            \n${name},Initiative,${initiative},"${getLevelText(initiative, 'initiative')} - ${getLevelDescription(initiative, 'initiative')}"
+            \n${name},Organisational Skills,${organisationalSkills},"${getLevelText(organisationalSkills, 'organisationalSkills')} - ${getLevelDescription(organisationalSkills, 'organisationalSkills')}"
+            \n${name},Strong Communication,${strongCommunication},"${getLevelText(strongCommunication, 'strongCommunication')} - ${getLevelDescription(strongCommunication, 'strongCommunication')}"
+            \n${name},Conflict Resolution,${conflictResolution},"${getLevelText(conflictResolution, 'conflictResolution')} - ${getLevelDescription(conflictResolution, 'conflictResolution')}"
+            \n${name},Quick Learner,${quickLearner},"${getLevelText(quickLearner, 'quickLearner')} - ${getLevelDescription(quickLearner, 'quickLearner')}"
+            \n${name},Detail Oriented,${detailOriented},""${getLevelText(detailOriented, 'detailOriented')} - ${getLevelDescription(detailOriented, 'detailOriented')}"
+            \n${name},Coaching Skills,${coachingSkills},""${getLevelText(coachingSkills, 'coachingSkills')} - ${getLevelDescription(coachingSkills, 'coachingSkills')}"
+            \n${name},Motivating Others,${motivatingOthers},""${getLevelText(motivatingOthers, 'motivatingOthers')} - ${getLevelDescription(motivatingOthers, 'motivatingOthers')}"
+            \n${name},Strategic Thinking,${strategicThinking},""${getLevelText(strategicThinking, 'strategicThinking')} - ${getLevelDescription(strategicThinking, 'strategicThinking')}"
+            \n${name},Vision/Planning,${visionPlanning},""${getLevelText(visionPlanning, 'visionPlanning')} - ${getLevelDescription(visionPlanning, 'visionPlanning')}"
+            \n${name},Financial Awareness,${financialAwareness},""${getLevelText(financialAwareness, 'financialAwareness')} - ${getLevelDescription(financialAwareness, 'financialAwareness')}"
+            \n${name},Entrepreneurship,${entrepreneurship},""${getLevelText(entrepreneurship, 'entrepreneurship')} - ${getLevelDescription(entrepreneurship, 'entrepreneurship')}"
+            \n${name},Visionary Thinking,${visionaryThinking},""${getLevelText(visionaryThinking, 'visionaryThinking')} - ${getLevelDescription(visionaryThinking, 'visionaryThinking')}"
+            \n${name},Negotiating,${negotiating},""${getLevelText(negotiating, 'negotiating')} - ${getLevelDescription(negotiating, 'negotiating')}"
+            \n${name},Reporting,${reporting},""${getLevelText(reporting, 'reporting')} - ${getLevelDescription(reporting, 'reporting')}"`;
+
+
+            // Create a Blob and download link
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "self_assessment_scores.csv";
+
+            // Append link to the body, click it, and remove it
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+
+
+    </body>
+    </html>
