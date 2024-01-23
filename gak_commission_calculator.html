@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seed Profit Contribution Calculator</title>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FFFFFF;
+            color: #2A3C54; /* Seed Indigo */
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 2px solid #2A3C54; /* Seed Indigo */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #2A3C54; /* Seed Indigo */
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4895F6; /* Blueberry Blue */
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #2A3C54; /* Seed Indigo */
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #EFF1F3; /* Seashell Grey */
+            border-radius: 5px;
+            white-space: pre-line; /* Adds spacing in the result text */
+        }
+        .label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Seed Profit Contribution Calculator</h2>
+
+        <div class="form-group">
+            <div class="label">Website Gross Revenue (£):</div>
+            <input type="number" id="revenue" name="revenue" placeholder="Enter revenue" oninput="calculateNetRevenue()">
+
+            <div class="label">Net Revenue (£):</div>
+            <input type="number" id="netRevenue" name="netRevenue" placeholder="Net Revenue" readonly>
+
+            <div class="label">Gross Margin Percentage (%):</div>
+            <input type="number" id="margin" name="margin" placeholder="Enter gross margin percentage">
+
+            <div class="label">Digital Media Spend (£):</div>
+            <input type="number" id="mediaSpend" name="mediaSpend" placeholder="Enter digital media spend">
+
+            <button onclick="calculateInvoice()">Calculate Invoice</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateNetRevenue() {
+            var revenue = parseFloat(document.getElementById('revenue').value);
+            var netRevenue = revenue / 1.2;
+            document.getElementById('netRevenue').value = netRevenue.toFixed(2);
+        }
+
+        function calculateInvoice() {
+            var netRevenue = parseFloat(document.getElementById('netRevenue').value);
+            var margin = parseFloat(document.getElementById('margin').value);
+            var mediaSpend = parseFloat(document.getElementById('mediaSpend').value);
+
+            var profit = (netRevenue * (margin / 100)) - mediaSpend;
+            var invoice = 0;
+            var feeDetails = "";
+
+            if (profit > 200000) {
+                invoice = (profit - 200000) * 0.05 + 8750;
+                feeDetails = "£8750 (Tiers 1 & 2) + 5% of £" + (profit - 200000).toFixed(2) + " (Tier 3)";
+            } else if (profit > 175000) {
+                invoice = ((profit - 175000) * 0.15) + 5000;
+                feeDetails = "£5000 (Tier 1) + 15% of £" + (profit - 175000).toFixed(2) + " (Tier 2)";
+            } else if (profit > 150000) {
+                invoice = (profit - 150000) * 0.20;
+                feeDetails = "20% of £" + (profit - 150000).toFixed(2) + " (Tier 1)";
+            }
+
+            document.getElementById('result').innerHTML = 'Final Contribution: £' + profit.toFixed(2) + '\nInvoice Amount: £' + invoice.toFixed(2) + '\nFee Details:\n' + feeDetails;
+        }
+    </script>
+</body>
+</html>
