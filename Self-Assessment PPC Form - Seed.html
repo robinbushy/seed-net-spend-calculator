@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Assessment Form - Seed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #2A3C54;
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #2A3C54;
+            font-weight: 600;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .slider-ticks {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            bottom: -20px;
+        }
+        .slider-ticks span {
+            position: relative;
+            text-align: center;
+            color: #aaa;
+            font-size: 10px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            margin: 20px 0;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4895F6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            position: relative;
+            z-index: 2;
+            margin-top: -11px;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #ddd;
+            height: 2px;
+            border-radius: 5px;
+            position: relative;
+            top: 10px;
+            z-index: 1;
+        }
+        output {
+            display: block;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #2A3C54;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #345B72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://helloseed.co.uk/wp-content/themes/seed/assets/images/logos/logo.svg" alt="Seed Logo">
+        </div>
+        <h1>Seed PPC Skill Form</h1>
+        <form id="assessmentForm" onsubmit="submitForm(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="analyticalSkills"><b>Analytical Skills:</b></label>
+            <input type="range" id="analyticalSkills" name="analyticalSkills" min="1" max="10" value="1" oninput="updateOutput('analyticalSkills', 'analyticalSkillsOutput', 'analyticalSkillsDescription')" required>
+            <output id="analyticalSkillsOutput">Level 1: Understands basic PPC metrics and terminology.</output>
+            <p id="analyticalSkillsDescription">Understands basic PPC metrics and terminology. Requires guidance in interpreting data.</p>
+            <br>
+            <label for="technicalProficiency"><b>Technical Proficiency:</b></label>
+            <input type="range" id="technicalProficiency" name="technicalProficiency" min="1" max="10" value="1" oninput="updateOutput('technicalProficiency', 'technicalProficiencyOutput', 'technicalProficiencyDescription')" required>
+            <output id="technicalProficiencyOutput">Level 1: Executes basic PPC campaign setup and optimization tasks.</output>
+            <p id="technicalProficiencyDescription">Executes basic PPC campaign setup and optimization tasks. Requires guidance in using PPC platforms.</p>
+            <br>
+            <label for="creativeThinking"><b>Creative Thinking:</b></label>
+            <input type="range" id="creativeThinking" name="creativeThinking" min="1" max="10" value="1" oninput="updateOutput('creativeThinking', 'creativeThinkingOutput', 'creativeThinkingDescription')" required>
+            <output id="creativeThinkingOutput">Level 1: Generates basic ad copy and creative ideas.</output>
+            <p id="creativeThinkingDescription">Generates basic ad copy and creative ideas. Requires guidance in understanding brand messaging.</p>
+            <br>
+            <label for="projectTimeManagement"><b>Project and Time Management:</b></label>
+            <input type="range" id="projectTimeManagement" name="projectTimeManagement" min="1" max="10" value="1" oninput="updateOutput('projectTimeManagement', 'projectTimeManagementOutput', 'projectTimeManagementDescription')" required>
+            <output id="projectTimeManagementOutput">Level 1: Manages simple PPC tasks with guidance.</output>
+            <p id="projectTimeManagementDescription">Manages simple PPC tasks with guidance. Requires assistance in prioritising and planning workload.</p>
+            <br>
+            <label for="communicationClientManagement"><b>Communication and Client Management:</b></label>
+            <input type="range" id="communicationClientManagement" name="communicationClientManagement" min="1" max="10" value="1" oninput="updateOutput('communicationClientManagement', 'communicationClientManagementOutput', 'communicationClientManagementDescription')" required>
+            <output id="communicationClientManagementOutput">Level 1: Communicates PPC updates and information with guidance.</output>
+            <p id="communicationClientManagementDescription">Communicates PPC updates and information with guidance. Requires support in understanding client requirements.</p>
+            <br>
+            <label for="strategy"><b>Strategy:</b></label>
+            <input type="range" id="strategy" name="strategy" min="1" max="10" value="1" oninput="updateOutput('strategy', 'strategyOutput', 'strategyDescription')" required>
+            <output id="strategyOutput">Level 1: Follows predefined PPC strategies with guidance.</output>
+            <p id="strategyDescription">Follows predefined PPC strategies with guidance. Requires support in understanding strategic objectives.</p>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function updateOutput(inputId, outputId, descriptionId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            const description = document.getElementById(descriptionId);
+            const level = getLevelText(input.value, inputId);
+            const levelDescription = getLevelDescription(input.value, inputId);
+            output.textContent = level;
+            description.textContent = levelDescription;
+        }
+
+        function getLevelText(value, question) {
+            const levels = [
+                "Level 1",
+                "Level 2",
+                "Level 3",
+                "Level 4",
+                "Level 5",
+                "Level 6",
+                "Level 7",
+                "Level 8",
+                "Level 9",
+                "Level 10"
+            ];
+
+            const levelIndex = Math.ceil(value / 10 * levels.length) - 1;
+            return `${levels[levelIndex]}: ${getLevelDescription(value, question)}`;
+        }
+
+        function updateOutput(inputId, outputId, descriptionId) {
+    const input = document.getElementById(inputId);
+    const output = document.getElementById(outputId);
+    const description = document.getElementById(descriptionId);
+    const level = getLevelText(input.value, inputId);
+    const levelDescription = getLevelDescription(input.value, inputId);
+    output.textContent = level;
+    description.textContent = levelDescription;
+}
+
+function getLevelText(value, question) {
+    const levels = [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5",
+        "Level 6",
+        "Level 7",
+        "Level 8",
+        "Level 9",
+        "Level 10"
+    ];
+
+    const levelIndex = Math.floor((value - 1) / 1); // Calculate the correct index
+    return `${levels[levelIndex]}`;
+}
+
+function getLevelDescription(value, question) {
+    let descriptions;
+
+    switch (question) {
+        case 'analyticalSkills':
+            descriptions = [
+                "Understands basic PPC metrics and terminology. Requires guidance in interpreting data.",
+                "Shows improvement in analysing PPC data. Begins to draw insights from data trends.",
+                "Analyses PPC data effectively to identify trends and patterns. Demonstrates understanding of statistical concepts.",
+                "Utilises third party analytical tools for in-depth PPC analysis. Capable of performing segmentation and cohort analysis.",
+                "Conducts advanced PPC data analysis, including regression analysis. Develops their own experimental frameworks for analysing performance.",
+                "Proficient in setting up and using third-party attribution software, and interpreting the data effectively. Skilled in communicating data from multiple attribution perspectives and strategically implementing insights.",
+                "Applies AI and machine learning techniques to PPC data analysis. Develops predictive models for campaign and account forecasting.",
+                "Has a backlog of case studies for effective data analysis that’s shared with the department. Mentors others and leads workshops in advanced data analysis techniques.",
+                "Shapes the organisation's data analytics vision for PPC. Innovates data analysis methodologies for enhanced ROI.",
+                "Sets industry standards in PPC data analytics. Transforms data analytics by influencing and shaping the PPC industry."
+            ];
+            break;
+        case 'technicalProficiency':
+            descriptions = [
+                "Executes basic PPC campaign setup and optimization tasks. Requires guidance in using PPC platforms.",
+                "Shows improvement in navigating PPC platforms. Begins to experiment with ways of running/optimising campaigns.",
+                "Demonstrates proficiency in setting up and managing PPC campaigns. Successfully utilises the advanced features of PPC platforms for effective results.",
+                "Implements advanced campaign structures and bidding strategies at scale. Capable of troubleshooting complex technical issues in campaigns on their own.",
+                "Starting to utilise APIs and scripts to automate and bring efficiency to PPC tasks. Implements advanced tracking and tagging solutions on their accounts.",
+                "Through experience and experimentation, developing a unique set of best practices to ensure account success. Shares and develops these bespoke solutions for campaign optimization with the department.",
+                "Frequently participating in the ideation of new PPC tools and scripts to innovate our ways of working. Has published a whitepaper showcasing an innovative approach to PPC, supported by case studies and client testimonials.",
+                "Spearheaded the transformation of a large account through strategic account infrastructure, scaling PPC to impact the overall business objectives.",
+                "Drives the agency's PPC technology roadmap, imparting expertise through dynamic panel discussions and influential industry presentations. Collaborates seamlessly across departments, leveraging technical prowess to propel the agency forward.",
+                "Pioneers cutting-edge advancements in PPC technology development, setting industry standards. Transforms PPC technology into a strategic asset, driving innovation and achieving unprecedented results for the organisation."
+            ];
+            break;
+        case 'creativeThinking':
+            descriptions = [
+                "Generates basic ad copy and creative ideas. Requires guidance in understanding brand messaging.",
+                "Shows improvement in crafting engaging ad content. Begins to experiment with different creative formats.",
+                "Demonstrates proficiency in creating compelling ad copy and visuals. Can adapt creatives to client’s bespoke tone of voice and brand identity.",
+                "Can effectively leverage different creatives across various campaigns across the full funnel. Has experience in tailoring creatives for different audience segments for the same client.",
+                "Develops innovative ad concepts and works on developing themed campaign strategies with the client. Utilises psychological principles to enhance ad effectiveness and implements advanced storytelling techniques in ad campaigns.",
+                "Has experience in working on full funnel creative campaigns and making sure these are impactful across departments. Has successful case studies of impactful A/B tests with PPC creatives and has shared these across the department.",
+                "Consistently delivers breakthrough creative concepts. Mentors others in developing creative skills.",
+                "Leads the department in creative ideation for our clients PPC campaigns. Develops cohesive brand narratives across multiple channels.",
+                "Shapes the organisation's creative vision for PPC advertising. Innovates new approaches to engage target audiences.",
+                "Sets industry benchmarks for creative excellence in PPC advertising. Transforms creative thinking into a competitive advantage for the organisation."
+            ];
+            break;
+        case 'projectTimeManagement':
+            descriptions = [
+                "Manages simple PPC tasks with guidance. Requires assistance in prioritising and planning workload.",
+                "Shows improvement in organising PPC tasks and deadlines. Begins to use basic project management tools.",
+                "Manages multiple PPC campaigns effectively. Utilises project management software to track progress.",
+                "Plans and executes PPC campaigns within realistic specified timelines. Capable of handling unexpected project changes.",
+                "Leads cross-functional PPC project teams. Implements agile project management methodologies.",
+                "Oversees complex PPC campaigns from inception to completion. Manages project risks and escalations effectively.",
+                "Develops and implements strategic project plans for PPC initiatives. Mentors others in project management best practices.",
+                "Aligns PPC projects with organisational goals and objectives. Implements project governance frameworks for improved efficiency.",
+                "Shapes the organisation's project management vision for PPC. Innovates new project management methodologies tailored for PPC campaigns.",
+                "Defines industry standards in project management for PPC initiatives. Transforms project management into a strategic capability for the organisation."
+            ];
+            break;
+        case 'communicationClientManagement':
+            descriptions = [
+                "Communicates PPC updates and information with guidance. Requires support in understanding client requirements.",
+                "Shows improvement in articulating PPC strategies and results. Begins to build rapport with clients.",
+                "Communicates effectively with clients, conveying PPC insights clearly. Demonstrates active listening and empathy in client interactions.",
+                "Manages client expectations and relationships proactively. Capable of handling challenging client conversations.",
+                "Develops and presents comprehensive PPC strategies to clients. Navigates complex client relationships with ease.",
+                "Leads client meetings and presentations with confidence. Builds long-term partnerships with clients through strategic collaboration.",
+                "Anticipates client needs and provides proactive recommendations. Resolves client issues promptly and effectively.",
+                "Aligns PPC strategies with clients' business objectives. Develops client retention and growth strategies.",
+                "Shapes the organisation's client management vision for PPC services. Innovates new approaches to enhance client satisfaction and loyalty.",
+                "Defines industry standards in client management for PPC agencies. Transforms client relationships into a strategic asset for the organisation."
+            ];
+            break;
+        case 'strategy':
+            descriptions = [
+                "Follows predefined PPC strategies with guidance. Requires support in understanding strategic objectives.",
+                "Shows improvement in formulating PPC tactics aligned with goals. Begins to analyse competitive landscapes.",
+                "Develops comprehensive PPC strategies tailored to client objectives. Demonstrates understanding of market dynamics and trends.",
+                "Creates and executes strategic PPC plans for client campaigns. Capable of adapting strategies based on performance metrics.",
+                "Develops innovative PPC strategies to gain competitive advantage. Utilises data-driven insights to optimise strategy implementation.",
+                "Leads strategic planning initiatives across multiple PPC campaigns. Guides teams in translating strategic objectives into actionable plans.",
+                "Designs overarching PPC strategies aligned with organisational goals. Provides thought leadership on industry trends and best practices.",
+                "Drives strategic direction for the organisation's PPC services. Develops and implements breakthrough strategies for client success.",
+                "Shapes the organisation's strategic vision for PPC leadership. Innovates new approaches to disrupt the PPC landscape.",
+                "Sets industry benchmarks for strategic excellence in PPC marketing. Transforms strategic thinking into a competitive advantage for the organisation."
+            ];
+            break;
+        default:
+            descriptions = [];
+    }
+
+    const levelIndex = Math.floor((value - 1) / 1); // Calculate the correct index
+    return descriptions[levelIndex];
+}
+
+function submitForm(event) {
+event.preventDefault();
+
+const name = document.getElementById("name").value;
+const analyticalSkills = document.getElementById("analyticalSkills").value;
+const technicalProficiency = document.getElementById("technicalProficiency").value;
+const creativeThinking = document.getElementById("creativeThinking").value;
+const projectTimeManagement = document.getElementById("projectTimeManagement").value;
+const communicationClientManagement = document.getElementById("communicationClientManagement").value;
+const strategy = document.getElementById("strategy").value;
+
+const csvContent = `Name,Category,Score,Description
+\n${name},Analytical Skills,${analyticalSkills},"${getLevelText(analyticalSkills, 'analyticalSkills')} - ${getLevelDescription(analyticalSkills, 'analyticalSkills')}"
+\n${name},Technical Proficiency,${technicalProficiency},"${getLevelText(technicalProficiency, 'technicalProficiency')} - ${getLevelDescription(technicalProficiency, 'technicalProficiency')}"
+\n${name},Creative Thinking,${creativeThinking},"${getLevelText(creativeThinking, 'creativeThinking')} - ${getLevelDescription(creativeThinking, 'creativeThinking')}"
+\n${name},Project and Time Management,${projectTimeManagement},"${getLevelText(projectTimeManagement, 'projectTimeManagement')} - ${getLevelDescription(projectTimeManagement, 'projectTimeManagement')}"
+\n${name},Communication and Client Management,${communicationClientManagement},"${getLevelText(communicationClientManagement, 'communicationClientManagement')} - ${getLevelDescription(communicationClientManagement, 'communicationClientManagement')}"
+\n${name},Strategy,${strategy},"${getLevelText(strategy, 'strategy')} - ${getLevelDescription(strategy, 'strategy')}"`;
+
+const blob = new Blob([csvContent], { type: "text/csv" });
+const url = URL.createObjectURL(blob);
+const a = document.createElement("a");
+a.href = url;
+a.download = "self_assessment_scores.csv";
+
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+}
+</script>
+</body>
+</html>
