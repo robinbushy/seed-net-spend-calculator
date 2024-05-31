@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Self-Assessment Form - Seed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #2A3C54;
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #2A3C54;
+            font-weight: 600;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .slider-ticks {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            bottom: -20px;
+        }
+        .slider-ticks span {
+            position: relative;
+            text-align: center;
+            color: #aaa;
+            font-size: 10px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            margin: 20px 0;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4895F6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            position: relative;
+            z-index: 2;
+            margin-top: -11px;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #ddd;
+            height: 2px;
+            border-radius: 5px;
+            position: relative;
+            top: 10px;
+            z-index: 1;
+        }
+        output {
+            display: block;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #2A3C54;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #345B72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Finance Self-Assessment Form</h1>
+        <form id="assessmentForm" onsubmit="submitForm(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="vision"><b>Vision:</b></label>
+            <input type="range" id="vision" name="vision" min="1" max="10" value="1" oninput="updateOutput('vision', 'visionOutput', 'visionDescription')" required>
+            <output id="visionOutput">Level 1: Understands the organisation's vision and finance’s role in supporting it. Requires guidance in aligning finance tasks with the broader vision.</output>
+            <p id="visionDescription">Understands the organisation's vision and finance’s role in supporting it. Requires guidance in aligning finance tasks with the broader vision.</p>
+            <br>
+            <label for="operationalExcellence"><b>Operational Excellence:</b></label>
+            <input type="range" id="operationalExcellence" name="operationalExcellence" min="1" max="10" value="1" oninput="updateOutput('operationalExcellence', 'operationalExcellenceOutput', 'operationalExcellenceDescription')" required>
+            <output id="operationalExcellenceOutput">Level 1: Understands basic finance operational processes and procedures. Requires guidance in finance operational tasks.</output>
+            <p id="operationalExcellenceDescription">Understands basic finance operational processes and procedures. Requires guidance in finance operational tasks.</p>
+            <br>
+            <label for="financialAwareness"><b>Financial Awareness:</b></label>
+            <input type="range" id="financialAwareness" name="financialAwareness" min="1" max="10" value="1" oninput="updateOutput('financialAwareness', 'financialAwarenessOutput', 'financialAwarenessDescription')" required>
+            <output id="financialAwarenessOutput">Level 1: Understands basic financial principles and terminology. Requires guidance in financial tasks.</output>
+            <p id="financialAwarenessDescription">Understands basic financial principles and terminology. Requires guidance in financial tasks.</p>
+            <br>
+            <label for="organisationalDevelopment"><b>Organisational Development:</b></label>
+            <input type="range" id="organisationalDevelopment" name="organisationalDevelopment" min="1" max="10" value="1" oninput="updateOutput('organisationalDevelopment', 'organisationalDevelopmentOutput', 'organisationalDevelopmentDescription')" required>
+            <output id="organisationalDevelopmentOutput">Level 1: Understands basic principles of organisational development and its impact on finance. Requires guidance in organisational tasks related to finance.</output>
+            <p id="organisationalDevelopmentDescription">Understands basic principles of organisational development and its impact on finance. Requires guidance in organisational tasks related to finance.</p>
+            <br>
+            <label for="innovationChangeManagement"><b>Innovation and Change Management:</b></label>
+            <input type="range" id="innovationChangeManagement" name="innovationChangeManagement" min="1" max="10" value="1" oninput="updateOutput('innovationChangeManagement', 'innovationChangeManagementOutput', 'innovationChangeManagementDescription')" required>
+            <output id="innovationChangeManagementOutput">Level 1: Understands basic principles of innovation and change management within finance. Requires guidance in finance innovation tasks.</output>
+            <p id="innovationChangeManagementDescription">Understands basic principles of innovation and change management within finance. Requires guidance in finance innovation tasks.</p>
+            <br>
+            <label for="progressiveAwareness"><b>Progressive Awareness:</b></label>
+            <input type="range" id="progressiveAwareness" name="progressiveAwareness" min="1" max="10" value="1" oninput="updateOutput('progressiveAwareness', 'progressiveAwarenessOutput', 'progressiveAwarenessDescription')" required>
+            <output id="progressiveAwarenessOutput">Level 1: Understands basic principles of progressivism and its importance in finance. Requires guidance in identifying progressive finance initiatives and practices.</output>
+            <p id="progressiveAwarenessDescription">Understands basic principles of progressivism and its importance in finance. Requires guidance in identifying progressive finance initiatives and practices.</p>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function updateOutput(inputId, outputId, descriptionId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            const description = document.getElementById(descriptionId);
+            const level = getLevelText(input.value, inputId);
+            const levelDescription = getLevelDescription(input.value, inputId);
+            output.textContent = level;
+            description.textContent = levelDescription;
+        }
+
+        function getLevelText(value, question) {
+            const levels = [
+                "Level 1",
+                "Level 2",
+                "Level 3",
+                "Level 4",
+                "Level 5",
+                "Level 6",
+                "Level 7",
+                "Level 8",
+                "Level 9",
+                "Level 10"
+            ];
+
+            const levelIndex = Math.floor((value - 1) / 1);
+            return `${levels[levelIndex]}`;
+        }
+
+        function getLevelDescription(value, question) {
+            let descriptions;
+
+            switch (question) {
+                case 'vision':
+                    descriptions = [
+                        "Understands the organisation's vision and finance’s role in supporting it. Requires guidance in aligning finance tasks with the broader vision.",
+                        "Shows improvement in understanding and articulating the organisation's vision within a finance context. Begins to align personal and finance team goals with the organisational vision.",
+                        "Demonstrates the ability to translate the organisation's vision into actionable finance plans. Contributes to finance team discussions on vision and strategy alignment.",
+                        "Leads finance initiatives that align with the organisational vision. Communicates the vision effectively to finance team members.",
+                        "Develops strategic finance plans that support the organisation's vision. Inspires and motivates finance team members to work towards the vision.",
+                        "Aligns finance departmental activities with the organisation's long-term vision. Plays a key role in shaping strategic finance initiatives to support the vision.",
+                        "Mentors others on the importance of vision alignment within finance. Contributes to the development of the organisation’s strategic finance vision.",
+                        "Drives significant finance organisational change to align with the vision. Develops long-term finance strategies that ensure vision alignment.",
+                        "Shapes the organisation's overall strategic finance direction. Innovates new finance strategies to enhance the organisation's vision and mission.",
+                        "Sets industry standards for finance vision alignment and strategic direction. Transforms finance practices to align with and support the organisational vision."
+                    ];
+                    break;
+                case 'operationalExcellence':
+                    descriptions = [
+                        "Understands basic finance operational processes and procedures. Requires guidance in finance operational tasks.",
+                        "Shows improvement in executing finance operational tasks. Begins to use basic finance tools for process management.",
+                        "Manages multiple finance operational processes effectively. Utilises finance tools to track progress and performance.",
+                        "Plans and executes complex finance operational tasks within timelines. Capable of handling unexpected finance operational challenges.",
+                        "Leads cross-functional finance operational projects. Implements efficient finance operational methodologies.",
+                        "Oversees complex finance operational initiatives from start to finish. Manages finance operational risks effectively.",
+                        "Develops and implements strategic finance operational plans. Mentors others in finance operational best practices.",
+                        "Aligns finance operational projects with organisational goals. Implements governance frameworks for finance operational efficiency.",
+                        "Shapes the organisation’s finance operational vision. Innovates new finance operational methodologies tailored for the organisation.",
+                        "Defines industry standards in finance operational excellence. Transforms finance operational management into a strategic capability."
+                    ];
+                    break;
+                case 'financialAwareness':
+                    descriptions = [
+                        "Understands basic financial principles and terminology. Requires guidance in financial tasks.",
+                        "Shows improvement in financial analysis. Begins to draw insights from financial data.",
+                        "Analyses financial data effectively to identify trends and patterns. Demonstrates understanding of basic financial concepts.",
+                        "Utilises financial tools for in-depth analysis. Capable of performing financial forecasting.",
+                        "Conducts advanced financial analysis, including budgeting and forecasting. Develops financial models to support business decisions.",
+                        "Proficient in financial planning and analysis. Skilled in communicating financial insights effectively.",
+                        "Applies advanced financial techniques to drive business performance. Develops predictive financial models.",
+                        "Leads financial strategy for the department. Mentors others in financial management techniques.",
+                        "Shapes the organisation’s financial strategy. Innovates financial methodologies for enhanced business outcomes.",
+                        "Sets industry standards in financial management. Transforms financial practices to influence the broader industry."
+                    ];
+                    break;
+                case 'organisationalDevelopment':
+                    descriptions = [
+                        "Understands basic principles of organisational development and its impact on finance. Requires guidance in organisational tasks related to finance.",
+                        "Shows improvement in organisational skills within a finance context. Begins to use basic tools for finance organisational development.",
+                        "Manages finance organisational tasks effectively. Utilises organisational tools to track finance progress and performance.",
+                        "Plans and executes finance organisational initiatives. Capable of handling unexpected organisational challenges in finance.",
+                        "Leads cross-functional finance organisational projects. Implements efficient organisational methodologies in finance.",
+                        "Oversees complex finance organisational initiatives from start to finish. Manages finance organisational risks effectively.",
+                        "Develops and implements strategic finance organisational plans. Mentors others in finance organisational development practices.",
+                        "Aligns finance organisational initiatives with company goals. Implements governance frameworks for finance organisational efficiency.",
+                        "Shapes the organisation’s finance development vision. Innovates new finance organisational methodologies.",
+                        "Defines industry standards in finance organisational development. Transforms finance organisational development into a strategic capability."
+                    ];
+                    break;
+                case 'innovationChangeManagement':
+                    descriptions = [
+                        "Understands basic principles of innovation and change management within finance. Requires guidance in finance innovation tasks.",
+                        "Shows improvement in driving finance change initiatives. Begins to use basic tools for finance innovation management.",
+                        "Manages finance innovation tasks effectively. Utilises change management tools to track finance progress.",
+                        "Plans and executes finance change initiatives. Capable of handling unexpected finance change challenges.",
+                        "Leads cross-functional finance innovation projects. Implements finance change management methodologies.",
+                        "Oversees complex finance innovation initiatives from start to finish. Manages finance change risks effectively.",
+                        "Develops and implements strategic finance innovation plans. Mentors others in finance change management practices.",
+                        "Aligns finance innovation projects with company goals. Implements governance frameworks for managing finance change.",
+                        "Shapes the organisation’s finance innovation strategy. Innovates new approaches to drive finance organisational change.",
+                        "Defines industry standards in finance innovation and change management. Transforms finance innovation practices to influence the broader industry."
+                    ];
+                    break;
+                case 'progressiveAwareness':
+                    descriptions = [
+                        "Understands basic principles of progressivism and its importance in finance. Requires guidance in identifying progressive finance initiatives and practices.",
+                        "Shows improvement in understanding the impact of progressive finance practices on the organisation and society. Begins to participate in progressive finance initiatives and projects.",
+                        "Contributes to the development and execution of progressive finance initiatives. Utilises tools and frameworks to track progress and impact of progressive finance practices.",
+                        "Plans and implements progressive finance programs within a department. Capable of identifying and addressing challenges associated with progressive finance initiatives.",
+                        "Leads cross-functional teams to execute progressive finance initiatives effectively. Implements progressive finance practices within their department, promoting a culture of inclusivity and innovation.",
+                        "Oversees complex progressive finance projects from inception to completion. Manages risks associated with implementing progressive finance practices, ensuring alignment with organisational goals.",
+                        "Develops and implements strategic progressive finance plans that align with broader company objectives. Mentors others in best practices for progressive finance awareness and initiatives, fostering an environment of continuous improvement.",
+                        "Aligns progressive finance initiatives with organisational goals and long-term objectives. Implements governance frameworks to ensure progressive finance practices are consistently maintained and monitored.",
+                        "Shapes the organisation’s vision and strategy for progressive finance awareness. Innovates new approaches and programs to enhance the company’s progressive finance impact, staying ahead of industry trends.",
+                        "Defines industry standards for progressive finance awareness and practices, setting benchmarks for others to follow. Transforms progressive finance practices into a strategic advantage for the organisation, influencing both internal and external stakeholders."
+                    ];
+                    break;
+                default:
+                    descriptions = [];
+            }
+
+            const levelIndex = Math.floor((value - 1) / 1);
+            return descriptions[levelIndex];
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const vision = document.getElementById("vision").value;
+            const operationalExcellence = document.getElementById("operationalExcellence").value;
+            const financialAwareness = document.getElementById("financialAwareness").value;
+            const organisationalDevelopment = document.getElementById("organisationalDevelopment").value;
+            const innovationChangeManagement = document.getElementById("innovationChangeManagement").value;
+            const progressiveAwareness = document.getElementById("progressiveAwareness").value;
+
+            const csvContent = `Name,Category,Score,Description
+            \n${name},Vision,${vision},"${getLevelText(vision, 'vision')} - ${getLevelDescription(vision, 'vision')}"
+            \n${name},Operational Excellence,${operationalExcellence},"${getLevelText(operationalExcellence, 'operationalExcellence')} - ${getLevelDescription(operationalExcellence, 'operationalExcellence')}"
+            \n${name},Financial Awareness,${financialAwareness},"${getLevelText(financialAwareness, 'financialAwareness')} - ${getLevelDescription(financialAwareness, 'financialAwareness')}"
+            \n${name},Organisational Development,${organisationalDevelopment},"${getLevelText(organisationalDevelopment, 'organisationalDevelopment')} - ${getLevelDescription(organisationalDevelopment, 'organisationalDevelopment')}"
+            \n${name},Innovation and Change Management,${innovationChangeManagement},"${getLevelText(innovationChangeManagement, 'innovationChangeManagement')} - ${getLevelDescription(innovationChangeManagement, 'innovationChangeManagement')}"
+            \n${name},Progressive Awareness,${progressiveAwareness},"${getLevelText(progressiveAwareness, 'progressiveAwareness')} - ${getLevelDescription(progressiveAwareness, 'progressiveAwareness')}"`;
+
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "finance_self_assessment_scores.csv";
+
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
