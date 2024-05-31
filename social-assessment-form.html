@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Self-Assessment Form - Seed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #2A3C54;
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #2A3C54;
+            font-weight: 600;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .slider-ticks {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            bottom: -20px;
+        }
+        .slider-ticks span {
+            position: relative;
+            text-align: center;
+            color: #aaa;
+            font-size: 10px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            margin: 20px 0;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4895F6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            position: relative;
+            z-index: 2;
+            margin-top: -11px;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #ddd;
+            height: 2px;
+            border-radius: 5px;
+            position: relative;
+            top: 10px;
+            z-index: 1;
+        }
+        output {
+            display: block;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #2A3C54;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #345B72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        <h1>Social Self-Assessment Form</h1>
+        <form id="assessmentForm" onsubmit="submitForm(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="analyticalSkills"><b>Analytical Skills:</b></label>
+            <input type="range" id="analyticalSkills" name="analyticalSkills" min="1" max="10" value="1" oninput="updateOutput('analyticalSkills', 'analyticalSkillsOutput', 'analyticalSkillsDescription')" required>
+            <output id="analyticalSkillsOutput">Level 1: Understands basic social media metrics and terminology. Requires guidance in interpreting social media data.</output>
+            <p id="analyticalSkillsDescription">Understands basic social media metrics and terminology. Requires guidance in interpreting social media data.</p>
+            <br>
+            <label for="technicalProficiency"><b>Technical Proficiency:</b></label>
+            <input type="range" id="technicalProficiency" name="technicalProficiency" min="1" max="10" value="1" oninput="updateOutput('technicalProficiency', 'technicalProficiencyOutput', 'technicalProficiencyDescription')" required>
+            <output id="technicalProficiencyOutput">Level 1: Executes basic social media tasks with guidance.</output>
+            <p id="technicalProficiencyDescription">Executes basic social media tasks with guidance. Requires assistance in understanding social media platforms and tools.</p>
+            <br>
+            <label for="creativeThinking"><b>Creative Thinking:</b></label>
+            <input type="range" id="creativeThinking" name="creativeThinking" min="1" max="10" value="1" oninput="updateOutput('creativeThinking', 'creativeThinkingOutput', 'creativeThinkingDescription')" required>
+            <output id="creativeThinkingOutput">Level 1: Generates basic social media content ideas. Requires guidance in understanding brand voice and tone.</output>
+            <p id="creativeThinkingDescription">Generates basic social media content ideas. Requires guidance in understanding brand voice and tone.</p>
+            <br>
+            <label for="projectTimeManagement"><b>Project and Time Management:</b></label>
+            <input type="range" id="projectTimeManagement" name="projectTimeManagement" min="1" max="10" value="1" oninput="updateOutput('projectTimeManagement', 'projectTimeManagementOutput', 'projectTimeManagementDescription')" required>
+            <output id="projectTimeManagementOutput">Level 1: Manages basic Social media tasks that are given to them with guidance from the team. Requires assistance in prioritising and planning workload.</output>
+            <p id="projectTimeManagementDescription">Manages basic Social media tasks that are given to them with guidance from the team. Requires assistance in prioritising and planning workload.</p>
+            <br>
+            <label for="communicationClientManagement"><b>Communication and Client Management:</b></label>
+            <input type="range" id="communicationClientManagement" name="communicationClientManagement" min="1" max="10" value="1" oninput="updateOutput('communicationClientManagement', 'communicationClientManagementOutput', 'communicationClientManagementDescription')" required>
+            <output id="communicationClientManagementOutput">Level 1: Communicates social media updates and information internally to peers with guidance. Requires a lot of guidance in interpreting clients requests.</output>
+            <p id="communicationClientManagementDescription">Communicates social media updates and information internally to peers with guidance. Requires a lot of guidance in interpreting clients requests.</p>
+            <br>
+            <label for="strategy"><b>Strategy:</b></label>
+            <input type="range" id="strategy" name="strategy" min="1" max="10" value="1" oninput="updateOutput('strategy', 'strategyOutput', 'strategyDescription')" required>
+            <output id="strategyOutput">Level 1: Follows predefined social media strategies with guidance.</output>
+            <p id="strategyDescription">Follows predefined social media strategies with guidance. Requires support in understanding strategic objectives and market trends.</p>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function updateOutput(inputId, outputId, descriptionId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            const description = document.getElementById(descriptionId);
+            const level = getLevelText(input.value, inputId);
+            const levelDescription = getLevelDescription(input.value, inputId);
+            output.textContent = level;
+            description.textContent = levelDescription;
+        }
+
+        function getLevelText(value, question) {
+            const levels = [
+                "Level 1",
+                "Level 2",
+                "Level 3",
+                "Level 4",
+                "Level 5",
+                "Level 6",
+                "Level 7",
+                "Level 8",
+                "Level 9",
+                "Level 10"
+            ];
+
+            const levelIndex = Math.floor((value - 1) / 1);
+            return `${levels[levelIndex]}`;
+        }
+
+        function getLevelDescription(value, question) {
+            let descriptions;
+
+            switch (question) {
+                case 'analyticalSkills':
+                    descriptions = [
+                        "Understands basic social media metrics and terminology. Requires guidance in interpreting social media data.",
+                        "Demonstrates ability to analyse basic social media metrics from social media data. Begins to draw insights from social media data trends. Requires some guidance.",
+                        "Analyses social media data effectively to identify trends and patterns. Demonstrates understanding of data analysis in social media analytics.",
+                        "Utilises advanced analytical tools for in-depth social media analysis. Capable of performing segmentation and trend analysis in social media data.",
+                        "Conducts advanced social media data analysis, including audience analysis. Develops strategies for audience segmentation and targeting.",
+                        "Understands forecasting techniques to predict social media performance but requires top-level guidance. Implements A/B testing strategies for social media campaigns.",
+                        "Consistently provides actionable insights to optimise social media strategies. Mentors others in advanced social media data analysis techniques.",
+                        "Leads strategic research initiatives to influence social media activity. Develops data-driven strategies to achieve social media objectives.",
+                        "Shapes the organisation's data analytics vision for social media. Innovates social media data analysis methodologies for enhanced brand performance.",
+                        "Defines industry standards in social media data analytics. Transforms social media data analytics into a strategic advantage for the organisation."
+                    ];
+                    break;
+                case 'technicalProficiency':
+                    descriptions = [
+                        "Executes basic social media tasks with guidance. Requires assistance in understanding social media platforms and tools.",
+                        "Shows ability to navigate social media platforms and tools. Begins to understand social media algorithms and best practices.",
+                        "Demonstrates proficiency in using social media management tools. Understands the fundamentals of organic and paid social media strategies.",
+                        "Implements basic social media strategies to achieve social media goals. Capable of conducting social media audits and competitive analysis.",
+                        "Utilises social media advertising platforms for campaign setup and optimization. Implements targeting and retargeting strategies for paid social.",
+                        "Customises social media advertising campaigns through advanced audience segmentation. Advanced knowledge of campaign set-up and requirements.",
+                        "Is able to create bespoke audience segmentation based on funnel strategy. Can build a strategy from start to finish and adapt based on objectives and performance.",
+                        "Designs scalable social media strategies alongside other channels and overall client business goals. Has deep understanding of advanced attribution models and can convey this when discussing with a client.",
+                        "Shapes the organisation's social media advertising vision. Innovates new approaches to paid social advertising for competitive advantage.",
+                        "Defines industry standards in social media advertising. Transforms paid social advertising into a strategic capability for the organisation."
+                    ];
+                    break;
+                case 'creativeThinking':
+                    descriptions = [
+                        "Generates basic social media content ideas. Requires guidance in understanding brand voice and tone.",
+                        "Able to create simple social media content using provided assets. Begins to experiment with different content formats and styles.",
+                        "Demonstrates proficiency in creating compelling social media content using provided assets. Understands the importance of storytelling and visual aesthetics.",
+                        "Begins to develop content pillars for social media strategies. Capable of conducting content calendar planning and scheduling.",
+                        "Creates impactful visuals and multimedia content for social media campaigns. Utilises user-generated content and influencer collaborations.",
+                        "Leads creative brainstorming sessions for social media content and can brief ideas and share vision with clients. Implements advanced content strategies to improve engagement.",
+                        "Consistently delivers breakthrough content concepts for social media. Mentors others in developing creative social media content.",
+                        "Drives creative direction for social media content initiatives. Develops cohesive content narratives across multiple platforms.",
+                        "Shapes the organisation's creative vision for social media content. Innovates new approaches to engage audiences through content.",
+                        "Sets industry benchmarks for creative excellence in social media content. Transforms creative thinking into a competitive advantage for the organisation."
+                    ];
+                    break;
+                case 'projectTimeManagement':
+                    descriptions = [
+                        "Manages basic Social media tasks that are given to them with guidance from the team. Requires assistance in prioritising and planning workload.",
+                        "Is able to organise Social media tasks and can meet deadlines with some guidance. Starting to proactively identifying tasks. Uses project management tools to help manage workload and keep on track.",
+                        "Can manage more than one Social media project effectively, assigning and creating their own tasks. Utilises project management software to track progress of tasks across multiple clients.",
+                        "Plans and executes Social media campaigns within specified timelines with little assistance from the wider team. Are able to prioritise client tasks and effectively balance workload.",
+                        "Leads Social media teams, assigning tasks to others in the client pod and driving them to complete tasks. Implements project management methodology to ensure the team is aware of what is required and keeping on track.",
+                        "Oversees and implements Social media campaigns from creation to completion. Identifies and manages the progress of projects, and confidently adapts to any changes or issues that occur.",
+                        "Develops and implements strategic project plans for Social media clients, across organic and paid social. Mentors others in project management best practices and identifies new processes to improve project management within the department.",
+                        "Aligns Social media projects with client goals and objectives and project manages the progress from start to completion. Actively rolls out new project management processes and methodologies for the department to improve efficiency and effectiveness.",
+                        "Shapes the organisation's project management vision for Social Media, driving the whole service department forward. Innovates and implements organisation wide project management processes.",
+                        "Industry leader in project management for Social media. Defines industry standards and creates innovative new solutions to further improve project management processes. Shares ideas with other industry leaders at conferences or through whitepapers."
+                    ];
+                    break;
+                case 'communicationClientManagement':
+                    descriptions = [
+                        "Communicates social media updates and information internally to peers with guidance. Requires a lot of guidance in interpreting clients requests.",
+                        "Understands updates and information internally without guidance. Begins to build rapport with clients and stakeholders.",
+                        "Can communicate with clients with guidance and structure. Demonstrates active listening and empathy in client interactions.",
+                        "Communicates effectively with clients, conveying social media insights. Able to handle client conversations and navigate responses.",
+                        "Manages client expectations and relationships proactively. Navigates complex client relationships with ease.",
+                        "Develops and presents comprehensive social media strategies to clients. Leads client meetings and presentations with confidence resolving client issues promptly and effectively.",
+                        "Anticipates client needs and provides proactive recommendations. Capable of handling challenging client conversations and negotiations.",
+                        "Aligns social media strategies with clients' business objectives. Develops client retention and growth strategies.",
+                        "Shapes the organisation's client management vision for social media. Innovates new approaches to enhance client satisfaction and loyalty.",
+                        "Sets industry benchmarks for client management in social media. Transforms client relationships into a strategic asset for the organisation."
+                    ];
+                    break;
+                case 'strategy':
+                    descriptions = [
+                        "Follows predefined social media strategies with guidance. Requires support in understanding strategic objectives and market trends.",
+                        "Can form baseline social media strategy points aligned with client goals. Begins to analyse competitive landscapes and audience behaviours.",
+                        "Develops comprehensive social media strategies tailored to client objectives. Demonstrates understanding of market dynamics and emerging trends.",
+                        "Creates and executes strategic social media plans for client campaigns. Capable of adapting strategies based on performance metrics and insights.",
+                        "Develops innovative social media strategies to gain competitive advantage. Utilises data-driven insights to optimise strategy implementation.",
+                        "Leads strategic planning initiatives across multiple social media channels and can reflect on performance, identifying changes for future strategies. Guides teams in translating strategic objectives into actionable plans.",
+                        "Designs overarching social media strategies aligned with organisational goals alongside other channels. Provides thought leadership on industry updates and best practices for social strategies.",
+                        "Drives strategic direction for the organisation's social media services and helps a client determine future targets and goals. Develops and implements breakthrough strategies for client success.",
+                        "Shapes the organisation's strategic vision for social media leadership. Innovates new approaches to disrupt the social media landscape.",
+                        "Sets industry benchmarks for strategic excellence in social media. Transforms strategic thinking into a competitive advantage for the organisation."
+                    ];
+                    break;
+                default:
+                    descriptions = [];
+            }
+
+            const levelIndex = Math.floor((value - 1) / 1);
+            return descriptions[levelIndex];
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const analyticalSkills = document.getElementById("analyticalSkills").value;
+            const technicalProficiency = document.getElementById("technicalProficiency").value;
+            const creativeThinking = document.getElementById("creativeThinking").value;
+            const projectTimeManagement = document.getElementById("projectTimeManagement").value;
+            const communicationClientManagement = document.getElementById("communicationClientManagement").value;
+            const strategy = document.getElementById("strategy").value;
+
+            const csvContent = `Name,Category,Score,Description
+            \n${name},Analytical Skills,${analyticalSkills},"${getLevelText(analyticalSkills, 'analyticalSkills')} - ${getLevelDescription(analyticalSkills, 'analyticalSkills')}"
+            \n${name},Technical Proficiency,${technicalProficiency},"${getLevelText(technicalProficiency, 'technicalProficiency')} - ${getLevelDescription(technicalProficiency, 'technicalProficiency')}"
+            \n${name},Creative Thinking,${creativeThinking},"${getLevelText(creativeThinking, 'creativeThinking')} - ${getLevelDescription(creativeThinking, 'creativeThinking')}"
+            \n${name},Project and Time Management,${projectTimeManagement},"${getLevelText(projectTimeManagement, 'projectTimeManagement')} - ${getLevelDescription(projectTimeManagement, 'projectTimeManagement')}"
+            \n${name},Communication and Client Management,${communicationClientManagement},"${getLevelText(communicationClientManagement, 'communicationClientManagement')} - ${getLevelDescription(communicationClientManagement, 'communicationClientManagement')}"
+            \n${name},Strategy,${strategy},"${getLevelText(strategy, 'strategy')} - ${getLevelDescription(strategy, 'strategy')}"`;
+
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "social_self_assessment_scores.csv";
+
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
